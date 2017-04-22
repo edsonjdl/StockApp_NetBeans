@@ -41,44 +41,7 @@ public class DaoCotisation {
         this.liste = lista;
     }
 
-   
 
-    
-
-    
-
-    public void insertionBD() throws SQLException, ClassNotFoundException, java.io.IOException {
-
-        try {
-//            connexion = DriverManager.getConnection(
-//                    "jdbc:oracle:thin:@192.168.56.2:1521:ORCL", "hr", "hr");
-
-            connexion = SetupDB.getConnection("infoconnexion.prp");
-            stmt = connexion.createStatement();
-
-            for (Cotisation c : liste) {
-
-//                            ResultSet rset = stmt.executeQuery(
-                int rows = stmt.executeUpdate(
-                        "INSERT INTO `Acao_v1`.`PCAR4` (`data`, `abertura`, `max`, `min`, `fechamento`, `volFin`, `volQte`) VALUES ('" + c.getOuverture() + "', '" + c.getMax() + "', '" + c.getMin() + "', '" + c.getFermeture() + "', '" + c.getVolFin() + "');"
-
-
-                );
-
-            }
-
-
-        } finally {
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (connexion != null) {
-                connexion.close();
-            }
-
-        }
-    }
-    
     
         public void lireBD() throws SQLException, ClassNotFoundException, java.io.IOException {
 
@@ -143,3 +106,36 @@ public class DaoCotisation {
     }
 
 }
+
+//
+//    public void insertionBD() throws SQLException, ClassNotFoundException, java.io.IOException {
+//
+//        try {
+////            connexion = DriverManager.getConnection(
+////                    "jdbc:oracle:thin:@192.168.56.2:1521:ORCL", "hr", "hr");
+//
+//            connexion = SetupDB.getConnection("infoconnexion.prp");
+//            stmt = connexion.createStatement();
+//
+//            for (Cotisation c : liste) {
+//
+////                            ResultSet rset = stmt.executeQuery(
+//                int rows = stmt.executeUpdate(
+//                        "INSERT INTO `Acao_v1`.`PCAR4` (`data`, `abertura`, `max`, `min`, `fechamento`, `volFin`, `volQte`) VALUES ('" + c.getOuverture() + "', '" + c.getMax() + "', '" + c.getMin() + "', '" + c.getFermeture() + "', '" + c.getVolFin() + "');"
+//
+//
+//                );
+//
+//            }
+//
+//
+//        } finally {
+//            if (stmt != null) {
+//                stmt.close();
+//            }
+//            if (connexion != null) {
+//                connexion.close();
+//            }
+//
+//        }
+//    }
