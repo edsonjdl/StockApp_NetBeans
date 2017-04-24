@@ -1,7 +1,7 @@
 <%-- 
     Document   : pageAccueil
     Created on : 2017-04-23, 14:22:25
-    Author     : SARA
+    Author     : 
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
