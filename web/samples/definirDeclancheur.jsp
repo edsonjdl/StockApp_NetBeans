@@ -32,10 +32,7 @@
 
             
             function generateChartData() {
-            //    var firstDate = new Date();
-            //    firstDate.setDate(firstDate.getDate() - 1000);
-            //    firstDate.setHours(0, 0, 0, 0);
-            
+           
                 var firstDate = new Date(2012, 0, 1);
                 firstDate.setDate(firstDate.getDate() - 500);
                 firstDate.setHours(0, 0, 0, 0);
