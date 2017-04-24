@@ -47,8 +47,7 @@ public class CreationDonneesMM {
             System.out.println("moyenne rapide: " + moyenneRapide);
             System.out.println("moyenne lente: " + moyenneLente + "\n");
 
-//            mmRapide = new MoyenneMobile(listeCotisations.get(i).getDate(),moyenneRapide);
-//            mmLente = new MoyenneMobile(listeCotisations.get(i).getDate(),moyenneLente);
+
             mmRapide = new MoyenneMobile(moyenneRapide);
             mmLente = new MoyenneMobile(moyenneLente);
 
@@ -57,22 +56,5 @@ public class CreationDonneesMM {
         }
     }
 }
-//    private ListeCotisations listeCotisations;
 
-//    private MoyenneMobile mmLente;
-//    private MoyenneMobile mmRapide;
-//    
-//    private ValeurMMjour mmJour;
-//    private DonneesAffichageMM donneesMM;
-//
-//    SimpleDateFormat sdf2 = new SimpleDateFormat("yy-mm-dd");
-// Un test
-//    public CreationDonneesMM(ListeCotisations listeCotisations) {
-//        this.listeCotisations = listeCotisations;
-//    }
-//
-//    public CreationDonneesMM(ListeCotisations listeCotisations, DonneesAffichageMM donneesMM) {
-//        this.listeCotisations = listeCotisations;
-//        this.donneesMM = donneesMM;
-//    }
 

@@ -37,9 +37,10 @@ public class Debut extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     Cotisation c;
-    ListeCotisations listeC;
+    ListeCotisations listeTotale;
+    ListeCotisations listePartielle;
 
-    DonneesAffichageMM donneesMM;
+    DonneesAffichageMM donneesAction;
 
     public static final int PERIODE_RAPIDE = 7;
     public static final int PERIODE_LENT = 21;
@@ -47,17 +48,17 @@ public class Debut extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+
+
         // 1 - Creation des objets Cotisation et une liste de cotisation
         c = new Cotisation();
-        listeC = new ListeCotisations();
-        
-        String code = "pcar4";
+        listeTotale = new ListeCotisations();
 
         // 2 - Charger la liste de cotisations dans la liste
-        DaoCotisation daoCotisation = new DaoCotisation(c, listeC);
+        DaoCotisation daoCotisation = new DaoCotisation();
 
         try {
-            daoCotisation.lireBD(code);
+            daoCotisation.chargeBD(listeTotale);
         } catch (SQLException ex) {
             Logger.getLogger(Debut.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -66,17 +67,20 @@ public class Debut extends HttpServlet {
             Logger.getLogger(Debut.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-//        listeC.afficherCotisation();
+        listeTotale.afficherCotisation();
 
-        donneesMM = new DonneesAffichageMM();
-        CreationDonneesMM.genererMM(listeC, PERIODE_RAPIDE, PERIODE_LENT, donneesMM);
+//        listePartielle = new ListeCotisations();
+        String code = "bbse3";
+        listePartielle = listeTotale.filtrerAction(code);
 
-        String choixPage = request.getParameter("choixPage");
+        donneesAction = new DonneesAffichageMM();
+        CreationDonneesMM.genererMM(listePartielle, PERIODE_RAPIDE, PERIODE_LENT, donneesAction);
 
-        HttpSession session = request.getSession();
+//        String choixPage = request.getParameter("choixPage");
+
         String dest = "/samples/Menu.html";
-
-        session.setAttribute("maListe", donneesMM);
+        HttpSession session = request.getSession();
+        session.setAttribute("maListe", donneesAction);
 
         RequestDispatcher disp = getServletContext().getRequestDispatcher(dest);
         disp.forward(request, response);

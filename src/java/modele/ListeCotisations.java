@@ -12,6 +12,8 @@ import java.util.ArrayList;
  * @author edson
  */
 public class ListeCotisations extends ArrayList<Cotisation> {
+    
+        ListeCotisations actionChoisie;
 
     public ListeCotisations() {
     }
@@ -24,11 +26,20 @@ public class ListeCotisations extends ArrayList<Cotisation> {
         for (Cotisation c : this) {
             System.out.println(c);
         }
+
+    }
+    
+        public ListeCotisations filtrerAction(String code){
         
+        actionChoisie = new ListeCotisations();
+        
+        for(Cotisation c:this){
+            if(c.getCodeAction().equals(code)){
+               actionChoisie.add(c);
+            }
         }
-
-
+              
+        return actionChoisie;
+    }
 
 }
-
-

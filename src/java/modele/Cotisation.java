@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class Cotisation {
     
-//    private String codeAction = "PCAR4"; 
+    private String codeAction; 
 //            private Calendar date;
 //    private double ouverture, max, min, fermeture, volFin, volQte;
     private double ouverture, max, min, fermeture, volFin;
@@ -44,13 +44,13 @@ public class Cotisation {
     
     
 
-//    public String getCodeAction() {
-//        return codeAction;
-//    }
-//
-//    public void setCodeAction(String codeAction) {
-//        this.codeAction = codeAction;
-//    }
+    public String getCodeAction() {
+        return codeAction;
+    }
+
+    public void setCodeAction(String codeAction) {
+        this.codeAction = codeAction;
+    }
 //
 //    public Calendar getDate() {
 //        return date;
@@ -113,6 +113,9 @@ public class Cotisation {
 //        return "Acao{" + "codeAction=" + codeAction + ", date = (" + date.get(Calendar.DAY_OF_MONTH)+"-"+(date.get(Calendar.MONTH)+1) +"-"+date.get(Calendar.YEAR) +") , abertura=" + ouverture + ", fechamento=" + fermeture + ", max=" + max + ", min=" + min + ", volFin=" + volFin + ", volQte=" + volQte + '}';
 //    }
     
-    
+      @Override
+    public String toString() {
+        return "Acao{" + "codeAction=" + codeAction + ") , abertura=" + ouverture + ", fechamento=" + fermeture + ", max=" + max + ", min=" + min + ", volFin=" + volFin + '}';
+    }  
     
 }

@@ -18,6 +18,8 @@ public class ValeurMMjour {
     private MoyenneMobile mmLente;
     private MoyenneMobile mmRapide;
     private String signal;
+    
+    private String codeAction;
 
     // Pour adapter à la page
     private double ouverture, max, min, fermeture, volFin;

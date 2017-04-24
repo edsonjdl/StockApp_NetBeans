@@ -13,6 +13,8 @@ import java.util.ArrayList;
  */
 public class DonneesAffichageMM extends ArrayList<ValeurMMjour>{
     
+
+    
         public void ajouterDonneesMM(ValeurMMjour dMM) {
         this.add(dMM);
     }
@@ -23,5 +25,7 @@ public class DonneesAffichageMM extends ArrayList<ValeurMMjour>{
         }
 
     }
+    
+
     
 }
