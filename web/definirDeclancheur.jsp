@@ -12,12 +12,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Page indicateur</title>
+        <title>amStock Example</title>
         <link rel="stylesheet" href="../amcharts/style.css"	type="text/css">
 
-        <script src="amcharts/amcharts.js" type="text/javascript"></script>
-        <script src="amcharts/serial.js" type="text/javascript"></script>
-        <script src="amcharts/amstock.js" type="text/javascript"></script>
+        <script src="../amcharts/amcharts.js" type="text/javascript"></script>
+        <script src="../amcharts/serial.js" type="text/javascript"></script>
+        <script src="../amcharts/amstock.js" type="text/javascript"></script>
 
         <script>
             AmCharts.ready(function () {
@@ -25,55 +25,90 @@
                 createStockChart();
             });
 
-            var chartData = [];
-            var chartDataMM1 = [];
+            var chartData1 = [];
+            var chartData2 = [];
+            var chartData3 = [];
+            var chartData4 = [];
 
+            
             function generateChartData() {
+            //    var firstDate = new Date();
+            //    firstDate.setDate(firstDate.getDate() - 1000);
+            //    firstDate.setHours(0, 0, 0, 0);
+            
                 var firstDate = new Date(2012, 0, 1);
                 firstDate.setDate(firstDate.getDate() - 500);
                 firstDate.setHours(0, 0, 0, 0);
 
-                //var values = {};
-
             <c:forEach var="item" items="${maListe}"  varStatus="loop">
                 var newDate = new Date(firstDate);
                 newDate.setDate(newDate.getDate() + ${loop.index});
+
+
 
                 var open = ${item.ouverture};
                 var close = '${item.fermeture}';
                 var low = '${item.min}';
                 var high = '${item.max}';
                 var volume = '${item.volFin}';
+                var signal = '${item.signal}';
 
-                chartData[${loop.index}] = ({
+                chartData1[${loop.index}] = ({
                     date: newDate,
                     open: open,
                     close: close,
                     high: high,
                     low: low,
-                    volume: volume
+                    volume: volume,
+                    signal: signal
                 });
 
-             //   var teste = close + 5;
-            //    chartDataMM1.push({
-            //        date: newDate,
-              //      value: close + 5
-            //    });
+                var i = ${loop.index};
 
+                //var a2 = Math.round(Math.random() * (100 + i)) + 200 + i;
+                var a2 = ${item.mmRapide.valeur}; 
+                var b2 = Math.round(Math.random() * (1000 + i)) + 600 + i * 2;
+
+                //var a3 = Math.round(Math.random() * (100 + i)) + 200;
+                var a3 = ${item.mmLente.valeur};
+                var b3 = Math.round(Math.random() * (1000 + i)) + 600 + i * 2;
+
+                var a4 = Math.round(Math.random() * (100 + i)) + 200 + i;
+                var b4 = Math.round(Math.random() * (100 + i)) + 600 + i;
+
+
+                chartData2.push({
+                    date: newDate,
+                    value: a2,
+                    volume: b2
+                });
+                chartData3.push({
+                    date: newDate,
+                    value: a3,
+                    volume: b3
+                });
+                chartData4.push({
+                    date: newDate,
+                    value: a4,
+                    volume: b4
+                });
+                
 
             </c:forEach>
 
+                ///////////////////////////////////
+
             }
 
-            var chart;
 
             function createStockChart() {
-                chart = new AmCharts.AmStockChart();
-
+                var chart = new AmCharts.AmStockChart();
 
                 // DATASETS //////////////////////////////////////////
-                var dataSet = new AmCharts.DataSet();
-                dataSet.fieldMappings = [{
+                // create data sets first
+                var dataSet1 = new AmCharts.DataSet();
+                dataSet1.title = "Cotisations";
+                dataSet1.fieldMappings = [{
                         fromField: "open",
                         toField: "open"
                     }, {
@@ -91,25 +126,52 @@
                     }, {
                         fromField: "value",
                         toField: "value"
+                        }, {
+                        fromField: "signal",
+                        toField: "signal"
                     }];
-                dataSet.color = "#7f8da9";
-                dataSet.dataProvider = chartData;
-                dataSet.categoryField = "date";
+                dataSet1.color = "#7f8da9";
+                dataSet1.dataProvider = chartData1;
+                dataSet1.categoryField = "date";
 
-                var dataSet1 = new AmCharts.DataSet();
-                dataSet1.color = "#b0de09";
-                dataSet1.fieldMappings = [{
+                var dataSet2 = new AmCharts.DataSet();
+                dataSet2.title = "Moyenne Mobile Rapide";
+                dataSet2.fieldMappings = [{
                         fromField: "value",
                         toField: "value"
                     }, {
                         fromField: "volume",
                         toField: "volume"
                     }];
-                dataSet1.dataProvider = chartDataMM1;
-                dataSet1.categoryField = "date";
+                dataSet2.dataProvider = chartData2;
+                dataSet2.categoryField = "date";
+
+                var dataSet3 = new AmCharts.DataSet();
+                dataSet3.title = "Moyenne Mobile Lente";
+                dataSet3.fieldMappings = [{
+                        fromField: "value",
+                        toField: "value"
+                    }, {
+                        fromField: "volume",
+                        toField: "volume"
+                    }];
+                dataSet3.dataProvider = chartData3;
+                dataSet3.categoryField = "date";
+
+                var dataSet4 = new AmCharts.DataSet();
+                dataSet4.title = "fourth data set";
+                dataSet4.fieldMappings = [{
+                        fromField: "value",
+                        toField: "value"
+                    }, {
+                        fromField: "volume",
+                        toField: "volume"
+                    }];
+                dataSet4.dataProvider = chartData4;
+                dataSet4.categoryField = "date";
 
                 // set data sets to the chart
-                chart.dataSets = [dataSet, dataSet1];
+                chart.dataSets = [dataSet1, dataSet2, dataSet3, dataSet4];
 
                 // PANELS ///////////////////////////////////////////
                 // first stock panel
@@ -120,25 +182,40 @@
 
                 // graph of first stock panel
                 var graph1 = new AmCharts.StockGraph();
+                graph1.valueField = "value";
+                graph1.comparable = true;
+                graph1.compareField = "value";
+                graph1.bullet = "round";
+                graph1.bulletBorderColor = "#FFFFFF";
+                graph1.bulletBorderAlpha = 1;
+                graph1.balloonText = "[[title]]:<b>[[value]]</b>";
+                graph1.compareGraphBalloonText = "[[title]]:<b>[[value]]</b>";
+                graph1.compareGraphBullet = "round";
+                graph1.compareGraphBulletBorderColor = "#FFFFFF";
+                graph1.compareGraphBulletBorderAlpha = 1;
+                /////////////////////////////////////
                 graph1.type = "candlestick";
                 graph1.openField = "open";
                 graph1.closeField = "close";
                 graph1.highField = "high";
                 graph1.lowField = "low";
-                //graph1.valueField = "close";
+                graph1.valueField = "close";
                 graph1.lineColor = "#7f8da9";
                 graph1.fillColors = "#7f8da9";
                 graph1.negativeLineColor = "#db4c3c";
                 graph1.negativeFillColors = "#db4c3c";
                 graph1.fillAlphas = 1;
-                graph1.balloonText = "open:<b>[[open]]</b><br>close:<b>[[close]]</b><br>low:<b>[[low]]</b><br>high:<b>[[high]]</b>";
+                graph1.balloonText = "open:<b>[[open]]</b><br>close:<b>[[close]]</b><br>low:<b>[[low]]</b><br>high:<b>[[high]]</b><br>signal:<b>[[signal]]</b>";
                 graph1.useDataSetColors = false;
+
+
+
                 stockPanel1.addStockGraph(graph1);
 
                 // create stock legend
                 var stockLegend1 = new AmCharts.StockLegend();
-                stockLegend1.valueTextRegular = " ";
-                stockLegend1.markerType = "none";
+                stockLegend1.periodValueTextComparing = "[[percents.value.close]]%";
+                stockLegend1.periodValueTextRegular = "[[value.close]]";
                 stockPanel1.stockLegend = stockLegend1;
 
 
@@ -149,13 +226,12 @@
                 var graph2 = new AmCharts.StockGraph();
                 graph2.valueField = "volume";
                 graph2.type = "column";
+                graph2.showBalloon = false;
                 graph2.fillAlphas = 1;
                 stockPanel2.addStockGraph(graph2);
 
-                // create stock legend
                 var stockLegend2 = new AmCharts.StockLegend();
-                stockLegend2.valueTextRegular = " ";
-                stockLegend2.markerType = "none";
+                stockLegend2.periodValueTextRegular = "[[value.close]]";
                 stockPanel2.stockLegend = stockLegend2;
 
                 // set panels to the chart
@@ -163,31 +239,32 @@
 
 
                 // OTHER SETTINGS ////////////////////////////////////
-                var scrollbarSettings = new AmCharts.ChartScrollbarSettings();
-                scrollbarSettings.graph = graph1;
-                scrollbarSettings.updateOnReleaseOnly = false;
-                chart.chartScrollbarSettings = scrollbarSettings;
+                var sbsettings = new AmCharts.ChartScrollbarSettings();
+                sbsettings.graph = graph1;
+                sbsettings.updateOnReleaseOnly = false;
+                chart.chartScrollbarSettings = sbsettings;
 
+                // CURSOR
                 var cursorSettings = new AmCharts.ChartCursorSettings();
                 cursorSettings.valueBalloonsEnabled = true;
-                cursorSettings.graphBulletSize = 1;
                 chart.chartCursorSettings = cursorSettings;
 
 
                 // PERIOD SELECTOR ///////////////////////////////////
                 var periodSelector = new AmCharts.PeriodSelector();
+                periodSelector.position = "left";
                 periodSelector.periods = [{
                         period: "DD",
                         count: 10,
                         label: "10 days"
                     }, {
                         period: "MM",
+                        selected: true,
                         count: 1,
                         label: "1 month"
                     }, {
                         period: "YYYY",
                         count: 1,
-                        selected: true,
                         label: "1 year"
                     }, {
                         period: "YTD",
@@ -199,14 +276,15 @@
                 chart.periodSelector = periodSelector;
 
 
-                var panelsSettings = new AmCharts.PanelsSettings();
-                panelsSettings.marginRight = 16;
-                panelsSettings.marginLeft = 16;
-                panelsSettings.usePrefixes = true;
-                chart.panelsSettings = panelsSettings;
+                // DATA SET SELECTOR
+                var dataSetSelector = new AmCharts.DataSetSelector();
+                dataSetSelector.position = "left";
+                chart.dataSetSelector = dataSetSelector;
 
 
                 // EVENTS - Créer un type Event qui sera generé selon une condition (prototype)
+                
+                
                 var e0 = {
                     date: new Date(2010, 8, 19),
                     type: "sign",
@@ -292,12 +370,43 @@
                     text: "Longer text can\nalso be displayed",
                     description: "This is description of an event"
                 };
+                        
+            // dataSet1.stockEvents = [e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10];
+                //var evenements = [e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10];
+   
+               var evenements = [];
+               
+               
+var arrayLength = chartData1.length;
 
-                dataSet.stockEvents = [e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10];
+for (var i = 0; i < arrayLength; i++) {
+    
+    		    if(chartData1[i].signal === "achat"){                   
+                    evenements.push({
+                    date: chartData1[i].date,
+                    type: "arrowUp",
+                    backgroundColor: "#00CC00",
+                    graph: graph1,
+                    description: "This is description of an event"
+                    });
+                } else if(chartData1[i].signal === "vente"){
+                    
+                    evenements.push({
+                    date: chartData1[i].date,
+                    type: "arrowDown",
+                    backgroundColor: "#CC0000",
+                    graph: graph1,
+                    description: "This is description of an event"
+                });
+            }
+}
+
+
+
+dataSet1.stockEvents = evenements;
 
                 chart.write('chartdiv');
             }
-
         </script>
     </head>
     <body style="background-color:#FFFFFF">

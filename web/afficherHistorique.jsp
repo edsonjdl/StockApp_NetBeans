@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -23,11 +23,9 @@
             });
 
             var chart;
-            var chartDataCot = [];
-            var newPanel; // panel qui sera ajouté ou enlevé
-            var stockPanel1;
-            
-            
+            var chartData = [];
+            var newPanel;
+            var stockPanel;
 
             function generateChartData() {
                 var firstDate = new Date();
@@ -60,7 +58,7 @@
 
 
 
-                    chartDataCot[i] = ({
+                    chartData[i] = ({
                         date: newDate,
                         open: open,
                         close: close,
@@ -71,7 +69,30 @@
                 }
             }
 
-
+            function generateChartData2(i, ouv, max, min, ferm, vol) {
+                var firstDate = new Date();
+                firstDate.setHours(0, 0, 0, 0);
+                firstDate.setDate(firstDate.getDate() - 2000);
+                    var newDate = new Date(firstDate);
+                    newDate.setDate(newDate.getDate() + i);
+                    
+                    
+                    var open=ouv;
+                    var close=ferm;
+                    var low=min;
+                    var high=max;
+                    var volume=vol;
+                    
+                    chartData[i] = ({
+                        date: newDate,
+                        open: open,
+                        close: close,
+                        high: high,
+                        low: low,
+                        volume: volume
+                    });
+                
+            }
 
             function createStockChart() {
                 chart = new AmCharts.AmStockChart();
@@ -79,8 +100,8 @@
                 chart.balloon.horizontalPadding = 13;
 
                 // DATASET //////////////////////////////////////////
-                var dataSetCot = new AmCharts.DataSet();
-                dataSetCot.fieldMappings = [{
+                var dataSet = new AmCharts.DataSet();
+                dataSet.fieldMappings = [{
                         fromField: "open",
                         toField: "open"
                     }, {
@@ -99,15 +120,15 @@
                         fromField: "value",
                         toField: "value"
                     }];
-                dataSetCot.color = "#7f8da9";
-                dataSetCot.dataProvider = chartData;
-                dataSetCot.categoryField = "date";
+                dataSet.color = "#7f8da9";
+                dataSet.dataProvider = chartData;
+                dataSet.categoryField = "date";
 
-                chart.dataSets = [dataSetCot];
+                chart.dataSets = [dataSet];
 
                 // PANELS ///////////////////////////////////////////
-                stockPanel1 = new AmCharts.StockPanel();
-                stockPanel1.title = "Value";
+                stockPanel = new AmCharts.StockPanel();
+                stockPanel.title = "Value";
 
                 // graph of first stock panel
                 var graph = new AmCharts.StockGraph();
@@ -131,9 +152,9 @@
                 stockLegend.markerSize = 0;
                 stockLegend.valueTextRegular = undefined;
                 stockLegend.valueWidth = 250;
-                stockPanel1.stockLegend = stockLegend;
+                stockPanel.stockLegend = stockLegend;
 
-                chart.panels = [stockPanel1];
+                chart.panels = [stockPanel];
 
 
                 // OTHER SETTINGS ////////////////////////////////////
@@ -220,9 +241,9 @@
         </script>
     </head>
     <body style="background-color:#FFFFFF">
-    <input type="button" id="addPanelButton" onclick="addPanel()" value="Ajouter Panneau">
+    <input type="button" id="addPanelButton" onclick="addPanel()" value="add panel">
     <input type="button" disabled="true" id="removePanelButton" onclick="removePanel()"
-           value="Supprimer panneau">
+           value="remove panel">
     <div id="chartdiv" style="width:100%; height:600px;"></div>
 </body>
 
