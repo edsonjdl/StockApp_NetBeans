@@ -52,20 +52,20 @@ public class DaoCotisation {
             ResultSet rset = stmt.executeQuery(
                     "SELECT "
                     + "`" + code + "`.`data`, `" + code + "`.`abertura`, `" + code + "`.`max`, `" + code + "`.`min`, `" + code + "`.`fechamento`, `" + code + "`.`volFin`, `" + code + "`.`volQte` "//,  job_id "
-                    + "FROM `acoes`.`" + code + "` "
+                    + "FROM `acoes`.`" + code + "` ");
             //                    + "WHERE e.job_id = j.job_id "
             //                    + "WHERE department_id=60 "
             //                    + "AND job_id = 'IT_PROG' "
-            );
+            
 
             while (rset.next()) {
 
                 Cotisation cotisation = new Cotisation();
 
-                System.out.println(
-                        "Nom de l'employé: " + rset.getDate(1)
-                //                        + " fonction: " + rset.getString(2) //+ " employés"
-                );
+//                System.out.println(
+//                        "Nom de l'employé: " + rset.getDate(1)
+//                //                        + " fonction: " + rset.getString(2) //+ " employés"
+//                );
 
                 Date date = rset.getDate(1);
                 Calendar cal = new GregorianCalendar();
