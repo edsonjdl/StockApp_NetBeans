@@ -67,7 +67,7 @@ public class Debut extends HttpServlet {
             Logger.getLogger(Debut.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        listeC.afficherCotisation();
+//        listeC.afficherCotisation();
 
         donneesMM = new DonneesAffichageMM();
         CreationDonneesMM.genererMM(listeC, PERIODE_RAPIDE, PERIODE_LENT, donneesMM);
