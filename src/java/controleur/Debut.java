@@ -51,12 +51,14 @@ public class Debut extends HttpServlet {
         // 1 - Creation des objets Cotisation et une liste de cotisation
         c = new Cotisation();
         listeC = new ListeCotisations();
+        
+        String code = "pcar4";
 
         // 2 - Charger la liste de cotisations dans la liste
         DaoCotisation daoCotisation = new DaoCotisation(c, listeC);
 
         try {
-            daoCotisation.lireBD();
+            daoCotisation.lireBD(code);
         } catch (SQLException ex) {
             Logger.getLogger(Debut.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

@@ -21,7 +21,7 @@ import modele.ListeCotisations;
  */
 public class DaoCotisation {
 
-            // Charge le driver
+    // Charge le driver
 //        Class.forName("oracle.jdbc.OracleDriver");
     private Connection connexion = null;
     private Statement stmt = null;
@@ -36,14 +36,12 @@ public class DaoCotisation {
         this.cotisation = cotisation;
         this.liste = lista;
     }
-    
-        public DaoCotisation(ListeCotisations lista) {
+
+    public DaoCotisation(ListeCotisations lista) {
         this.liste = lista;
     }
 
-
-    
-        public void lireBD() throws SQLException, ClassNotFoundException, java.io.IOException {
+    public void lireBD(String code) throws SQLException, ClassNotFoundException, java.io.IOException {
 
         try {
 //            connexion = DriverManager.getConnection(
@@ -53,46 +51,40 @@ public class DaoCotisation {
             stmt = connexion.createStatement();
             ResultSet rset = stmt.executeQuery(
                     "SELECT "
-                            + "`pcar4`.`data`, `pcar4`.`abertura`, `pcar4`.`max`, `pcar4`.`min`, `pcar4`.`fechamento`, `pcar4`.`volFin`, `pcar4`.`volQte` "//,  job_id "
-                    + "FROM `acoes`.`pcar4` "
-//                    + "WHERE e.job_id = j.job_id "
-//                    + "WHERE department_id=60 "
-//                    + "AND job_id = 'IT_PROG' "
-                    );
-                    
+                    + "`" + code + "`.`data`, `" + code + "`.`abertura`, `" + code + "`.`max`, `" + code + "`.`min`, `" + code + "`.`fechamento`, `" + code + "`.`volFin`, `" + code + "`.`volQte` "//,  job_id "
+                    + "FROM `acoes`.`" + code + "` "
+            //                    + "WHERE e.job_id = j.job_id "
+            //                    + "WHERE department_id=60 "
+            //                    + "AND job_id = 'IT_PROG' "
+            );
 
             while (rset.next()) {
-                
+
                 Cotisation cotisation = new Cotisation();
 
-                
-                
                 System.out.println(
                         "Nom de l'employé: " + rset.getDate(1)
-//                        + " fonction: " + rset.getString(2) //+ " employés"
+                //                        + " fonction: " + rset.getString(2) //+ " employés"
                 );
-                
+
                 Date date = rset.getDate(1);
-                Calendar cal=new GregorianCalendar();               
-                cal.setTime(date);               
+                Calendar cal = new GregorianCalendar();
+                cal.setTime(date);
                 //cotisation.setDate(cal);
-                
+
                 cotisation.setOuverture(rset.getDouble(2));
                 cotisation.setMax(rset.getDouble(3));
                 cotisation.setMin(rset.getDouble(4));
                 cotisation.setFermeture(rset.getDouble(5));
                 cotisation.setVolFin(rset.getDouble(6));
                 //cotisation.setVolQte(rset.getDouble(7));
-                
-                
+
                 // ATENCAO AS DATAS. O MES COMECA DO 0 (ZERO)=> JANEIRO = 0.
-                
                 int mois = cal.get(Calendar.MONTH) + 1;
                 System.out.println(mois);
                 liste.ajouterCotisation(cotisation);
-                
-            }
 
+            }
 
         } finally {
             if (stmt != null) {
