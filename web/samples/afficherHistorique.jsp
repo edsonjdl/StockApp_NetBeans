@@ -49,7 +49,7 @@
                 
                 var i = ${loop.index};
 
-                chartData[${loop.index}] = ({
+                chartData[i] = ({
                     date: newDate,
                     open: open,
                     close: close,
