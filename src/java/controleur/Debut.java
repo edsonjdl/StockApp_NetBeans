@@ -50,12 +50,14 @@ public class Debut extends HttpServlet {
         // 1 - Creation des objets Cotisation et une liste de cotisation
         c = new Cotisation();
         listeC = new ListeCotisations();
+        
+        String code = "pcar4";
 
         // 2 - Charger la liste de cotisations dans la liste
         DaoCotisation daoCotisation = new DaoCotisation(c, listeC);
 
         try {
-            daoCotisation.lireBD();
+            daoCotisation.lireBD(code);
         } catch (SQLException ex) {
             Logger.getLogger(Debut.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -72,21 +74,8 @@ public class Debut extends HttpServlet {
         String choixPage = request.getParameter("choixPage");
 
         HttpSession session = request.getSession();
-        String dest = "/samples/TestJavaScript2.jsp";
+        String dest = "/samples/Menu.html";
 
-        if (choixPage.equals("test2")) {
-            dest = "/samples/TestJavaScript2.jsp";
-        } else if (choixPage.equals("test3")) {
-            dest = "/samples/TestJavaScript3.jsp";
-        } else if (choixPage.equals("test4")) {
-            dest = "/samples/stockEvents_4.jsp";
-        } else if (choixPage.equals("test5")) {
-            dest = "/samples/stockEvents_5.jsp";
-        } else if (choixPage.equals("test6")) {
-            dest = "/samples/stockMultipleDataSets_3.jsp";
-        }
-
-        //session.setAttribute("maListe", listeC);
         session.setAttribute("maListe", donneesMM);
 
         RequestDispatcher disp = getServletContext().getRequestDispatcher(dest);
