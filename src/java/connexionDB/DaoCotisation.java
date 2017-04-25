@@ -82,7 +82,7 @@ public class DaoCotisation {
 
                 // ATENCAO AS DATAS. O MES COMECA DO 0 (ZERO)=> JANEIRO = 0.
                 int mois = cal.get(Calendar.MONTH) + 1;
-                System.out.println(mois);
+//                System.out.println(mois);
                 liste.ajouterCotisation(cotisation);
 
             }

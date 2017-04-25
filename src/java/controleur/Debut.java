@@ -67,11 +67,16 @@ public class Debut extends HttpServlet {
             Logger.getLogger(Debut.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        listeTotale.afficherCotisation();
+//        listeTotale.afficherCotisation();
 
 //        listePartielle = new ListeCotisations();
-        String code = "bbse3";
+        //String code = "vale5";
+        
+        String code = request.getParameter("action");
+        
         listePartielle = listeTotale.filtrerAction(code);
+        
+        
 
         donneesAction = new DonneesAffichageMM();
         CreationDonneesMM.genererMM(listePartielle, PERIODE_RAPIDE, PERIODE_LENT, donneesAction);
@@ -81,6 +86,8 @@ public class Debut extends HttpServlet {
         String dest = "/samples/Menu.html";
         HttpSession session = request.getSession();
         session.setAttribute("maListe", donneesAction);
+        
+        System.out.println("code: " + code);
 
         RequestDispatcher disp = getServletContext().getRequestDispatcher(dest);
         disp.forward(request, response);

@@ -45,27 +45,27 @@
                         </c:if>-->
 
                         <div class="margin">
-                            <form name="frmTypeAnalyse" action="" method="post"> 
+                            <form name="frmTypeAnalyse" action="Debut" method="post" > 
                                 <div class="row">
                                     <table>
                                         <tr>
                                             <td><label class="" >Action </label>
-                                                <select class="form-control position" name="user" id="user" >
+                                                <select class="form-control position" name="action" >
                                                     <option value="0">Faire un choix ...</option>
-                                                    <option value="BBAS3">BBAS3</option>
-                                                    <option value="BBSE3">BBSE3</option>
-                                                    <option value="BOVA11">BOVA11</option>
-                                                    <option value="BRKM5">BRKM5</option>
-                                                    <option value="EQTL3">EQTL3</option>
-                                                    <option value="FLRY3">FLRY3</option>
-                                                    <option value="LREN3">LREN3</option>
-                                                    <option value="MGLU3">MGLU3</option>
-                                                    <option value="PCAR4">PCAR4</option>
-                                                    <option value="PETR4">PETR4</option>
-                                                    <option value="RADL3">RADL3</option>
-                                                    <option value="SMLE3">SMLE3</option>
-                                                    <option value="VALE5">VALE5</option>
-                                                    <option value="WEGE3">WEGE3</option>
+                                                    <option value="bbas3">BBAS3</option>
+                                                    <option value="bbse3">BBSE3</option>
+                                                    <option value="bova11">BOVA11</option>
+                                                    <option value="brkm5">BRKM5</option>
+                                                    <option value="eqtl3">EQTL3</option>
+                                                    <option value="flry3">FLRY3</option>
+                                                    <option value="lren3">LREN3</option>
+                                                    <option value="mglu3">MGLU3</option>
+                                                    <option value="pcar4">PCAR4</option>
+                                                    <option value="petr4">PETR4</option>
+                                                    <option value="radl3">RADL3</option>
+                                                    <option value="smle3">SMLE3</option>
+                                                    <option value="vale5">VALE5</option>
+                                                    <option value="wege3">WEGE3</option>
                                                 </select></td>
                                                 <td id="stylishTD">
                                                     <a href="">Consulter la liste des actions</a>
@@ -93,7 +93,7 @@
 
         <footer class="container text-center roundBottom">
             <p>© 2017 Tous droits réservés </p>
-            <a href="Debut">Debut</a>
+            <!--<a href="Debut">Debut</a>-->
         </footer>
 
     </body>
