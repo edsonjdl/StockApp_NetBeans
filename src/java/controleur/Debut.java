@@ -74,6 +74,7 @@ public class Debut extends HttpServlet {
         
         String code = request.getParameter("action");
         
+        
         listePartielle = listeTotale.filtrerAction(code);
         
         
@@ -84,10 +85,13 @@ public class Debut extends HttpServlet {
 //        String choixPage = request.getParameter("choixPage");
 
         String dest = "/samples/Menu.html";
+        //String dest = request.getParameter("typeAnalyse");
+        
         HttpSession session = request.getSession();
         session.setAttribute("maListe", donneesAction);
         
         System.out.println("code: " + code);
+        System.out.println("dest: " + dest);
 
         RequestDispatcher disp = getServletContext().getRequestDispatcher(dest);
         disp.forward(request, response);

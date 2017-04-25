@@ -78,9 +78,9 @@
                                 <h4>Type d'analyse</h4>
                                 <hr class="divider">	
                                 <br>
-                                <input type="radio" name="typeAnalyse" value="Visualisation de l'historique" checked="checked" /> Visualisation de l'historique </br>
-                                <input type="radio" name="typeAnalyse" value="Comparaison de performance d'une liste d'actions" /> Comparaison de performance d'une liste d'actions </br>
-                                <input type="radio" name="typeAnalyse" value="Visualisation des opportunités d'investissement" /> Visualisation des opportunités d'investissement </br>
+                                <input type="radio" name="typeAnalyse" value="/samples/afficherHistorique.jsp" checked="checked" /> Visualisation de l'historique </br>
+                                <input type="radio" name="typeAnalyse" value="/samples/comparerPerformance.jsp" /> Comparaison de performance d'une liste d'actions </br>
+                                <input type="radio" name="typeAnalyse" value="/samples/definirDeclancheur.jsp" /> Visualisation des opportunités d'investissement </br>
                                 </br>
                                 <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Continuer"/>	
                                 <br><br>
@@ -94,6 +94,7 @@
         <footer class="container text-center roundBottom">
             <p>© 2017 Tous droits réservés </p>
             <!--<a href="Debut">Debut</a>-->
+            <a href="Debut">Debut</a>
         </footer>
 
     </body>
