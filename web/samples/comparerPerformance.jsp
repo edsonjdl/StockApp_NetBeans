@@ -27,49 +27,157 @@
 			var chartData3 = [];
 			var chartData4 = [];
 
-			function generateChartData() {
-				var firstDate = new Date();
-				firstDate.setDate(firstDate.getDate() - 1500);
-				firstDate.setHours(0, 0, 0, 0);
+            function generateChartData() {
+                //    var firstDate = new Date();
+                //    firstDate.setDate(firstDate.getDate() - 1000);
+                //    firstDate.setHours(0, 0, 0, 0);
 
-				for (var i = 0; i < 1500; i++) {
-					var newDate = new Date(firstDate);
-					newDate.setDate(newDate.getDate() + i);
+                var firstDate = new Date(2012, 0, 1);
+                firstDate.setDate(firstDate.getDate() - 500);
+                firstDate.setHours(0, 0, 0, 0);
 
-					var a1 = Math.round(Math.random() * (40 + i)) + 100 + i;
-					var b1 = Math.round(Math.random() * (1000 + i)) + 500 + i * 2;
+                // Action principal
+            <c:forEach var="item" items="${maListe}"  varStatus="loop">
+                var newDate = new Date(firstDate);
+                newDate.setDate(newDate.getDate() + ${loop.index});
 
-					var a2 = Math.round(Math.random() * (100 + i)) + 200 + i;
-					var b2 = Math.round(Math.random() * (1000 + i)) + 600 + i * 2;
+                var open = ${item.ouverture};
+                var close = '${item.fermeture}';
+                var low = '${item.min}';
+                var high = '${item.max}';
+                var volume = '${item.volFin}';
+                var signal = '${item.signal}';
 
-					var a3 = Math.round(Math.random() * (100 + i)) + 200;
-					var b3 = Math.round(Math.random() * (1000 + i)) + 600 + i * 2;
+                chartData1[${loop.index}] = ({
+                    date: newDate,
+                    open: open,
+                    close: close,
+                    high: high,
+                    low: low,
+                    volume: volume,
+                    signal: signal
+                });
 
-					var a4 = Math.round(Math.random() * (100 + i)) + 200 + i;
-					var b4 = Math.round(Math.random() * (100 + i)) + 600 + i;
+                <%--
+                 //var i = ${loop.index};
+                --%>
 
-					chartData1.push({
-						date: newDate,
-						value: a1,
-						volume: b1
-					});
-					chartData2.push({
-						date: newDate,
-						value: a2,
-						volume: b2
-					});
-					chartData3.push({
-						date: newDate,
-						value: a3,
-						volume: b3
-					});
-					chartData4.push({
-						date: newDate,
-						value: a4,
-						volume: b4
-					});
-				}
-			}
+
+            </c:forEach>
+
+                // Comparateur 1
+            <c:forEach var="item" items="${comp1}"  varStatus="loop">
+                var newDate = new Date(firstDate);
+                newDate.setDate(newDate.getDate() + ${loop.index});
+
+                var open = ${item.ouverture};
+                var close = '${item.fermeture}';
+                var low = '${item.min}';
+                var high = '${item.max}';
+                var volume = '${item.volFin}';
+                var signal = '${item.signal}';
+
+                chartData2[${loop.index}] = ({
+                    date: newDate,
+                    open: open,
+                    close: close,
+                    high: high,
+                    low: low,
+                    volume: volume,
+                    signal: signal
+                });
+                <%--
+                                //var i = ${loop.index};
+                --%>
+
+            </c:forEach>
+                
+                                // Comparateur 2
+            <c:forEach var="item" items="${comp2}"  varStatus="loop">
+                var newDate = new Date(firstDate);
+                newDate.setDate(newDate.getDate() + ${loop.index});
+
+                var open = ${item.ouverture};
+                var close = '${item.fermeture}';
+                var low = '${item.min}';
+                var high = '${item.max}';
+                var volume = '${item.volFin}';
+                var signal = '${item.signal}';
+
+                chartData3[${loop.index}] = ({
+                    date: newDate,
+                    open: open,
+                    close: close,
+                    high: high,
+                    low: low,
+                    volume: volume,
+                    signal: signal
+                });
+                <%--
+                                //var i = ${loop.index};
+                --%>
+
+            </c:forEach>
+                
+                                // Comparateur 3
+            <c:forEach var="item" items="${comp3}"  varStatus="loop">
+                var newDate = new Date(firstDate);
+                newDate.setDate(newDate.getDate() + ${loop.index});
+
+                var open = ${item.ouverture};
+                var close = '${item.fermeture}';
+                var low = '${item.min}';
+                var high = '${item.max}';
+                var volume = '${item.volFin}';
+                var signal = '${item.signal}';
+
+                chartData4[${loop.index}] = ({
+                    date: newDate,
+                    open: open,
+                    close: close,
+                    high: high,
+                    low: low,
+                    volume: volume,
+                    signal: signal
+                });
+                <%--
+                                //var i = ${loop.index};
+                --%>
+
+            </c:forEach>
+
+            <%--
+
+                                //var a2 = Math.round(Math.random() * (100 + i)) + 200 + i;
+               // var a2 = ${item.mmRapide.valeur}; 
+                //var b2 = Math.round(Math.random() * (1000 + i)) + 600 + i * 2;
+
+                //var a3 = Math.round(Math.random() * (100 + i)) + 200;
+                var a3 = ${item.mmLente.valeur};
+                var b3 = Math.round(Math.random() * (1000 + i)) + 600 + i * 2;
+
+                var a4 = Math.round(Math.random() * (100 + i)) + 200 + i;
+                var b4 = Math.round(Math.random() * (100 + i)) + 600 + i;
+
+
+                chartData2.push({
+                    date: newDate,
+                    value: a2,
+                    volume: b2
+                });
+                chartData3.push({
+                    date: newDate,
+                    value: a3,
+                    volume: b3
+                });
+                chartData4.push({
+                    date: newDate,
+                    value: a4,
+                    volume: b4
+                });
+            --%>
+
+            }
 
 			function createStockChart() {
 				var chart = new AmCharts.AmStockChart();

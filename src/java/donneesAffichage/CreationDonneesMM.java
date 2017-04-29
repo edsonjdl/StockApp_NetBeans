@@ -43,9 +43,9 @@ public class CreationDonneesMM {
             }
 
             double moyenneLente = ((int) ((sommeFermeturesL / periodeLent) * 100)) / 100.0;
-            System.out.println(listeCotisations.get(i));
-            System.out.println("moyenne rapide: " + moyenneRapide);
-            System.out.println("moyenne lente: " + moyenneLente + "\n");
+//            System.out.println(listeCotisations.get(i));
+//            System.out.println("moyenne rapide: " + moyenneRapide);
+//            System.out.println("moyenne lente: " + moyenneLente + "\n");
 
 
             mmRapide = new MoyenneMobile(moyenneRapide);

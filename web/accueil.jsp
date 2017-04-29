@@ -45,7 +45,7 @@
                         </c:if>-->
 
                         <div class="margin">
-                            <form name="frmTypeAnalyse" action="Debut" method="post" > 
+                            <form name="frmTypeAnalyse" action="Preparation" method="post" > 
                                 <div class="row">
                                     <table>
                                         <tr>
@@ -78,11 +78,12 @@
                                 <h4>Type d'analyse</h4>
                                 <hr class="divider">	
                                 <br>
-                                <input type="radio" name="typeAnalyse" value="/samples/afficherHistorique.jsp" checked="checked" /> Visualisation de l'historique </br>
-                                <input type="radio" name="typeAnalyse" value="/samples/comparerPerformance.jsp" /> Comparaison de performance d'une liste d'actions </br>
-                                <input type="radio" name="typeAnalyse" value="/samples/definirDeclancheur.jsp" /> Visualisation des opportunités d'investissement </br>
+                                <input type="radio" name="typeAnalyse" value="Historique" checked="checked" /> Visualisation de l'historique </br>
+                                <input type="radio" name="typeAnalyse" value="Comparaison" /> Comparaison de performance d'une liste d'actions </br>
+                                <input type="radio" name="typeAnalyse" value="Opportunites" /> Visualisation des opportunités d'investissement </br>
                                 </br>
-                                <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Continuer"/>	
+                                <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Continuer"/>
+                                <input type='hidden' name="comparable" value='Non' />
                                 <br><br>
                             </form>
                         </div>

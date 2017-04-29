@@ -8,8 +8,8 @@ package controleur;
 import connexionDB.DaoCotisation;
 import donneesAffichage.CreationDonneesMM;
 import donneesAffichage.DonneesAffichageMM;
-import donneesAffichage.Reference;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,9 +24,9 @@ import modele.ListeCotisations;
 
 /**
  *
- * @author 1695625
+ * @author edson
  */
-public class Debut extends HttpServlet {
+public class DebutOpp extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,14 +41,7 @@ public class Debut extends HttpServlet {
     ListeCotisations listeTotale;
     ListeCotisations listePartielle;
 
-    ListeCotisations comparateur1;
-    ListeCotisations comparateur2;
-    ListeCotisations comparateur3;
-
     DonneesAffichageMM donneesAction;
-    DonneesAffichageMM donneesComp1;
-    DonneesAffichageMM donneesComp2;
-    DonneesAffichageMM donneesComp3;
 
     public static final int PERIODE_RAPIDE = 7;
     public static final int PERIODE_LENT = 21;
@@ -56,7 +49,8 @@ public class Debut extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        System.out.println("Servlet Debut");
+
+
         // 1 - Creation des objets Cotisation et une liste de cotisation
         c = new Cotisation();
         listeTotale = new ListeCotisations();
@@ -75,42 +69,31 @@ public class Debut extends HttpServlet {
         }
 
 //        listeTotale.afficherCotisation();
-//        listePartielle = new ListeCotisations();
-        //String codeReference = "vale5";
-//        String codeReference = request.getParameter("action");
-        String codeReference = Reference.getCodeAction();
 
-        listePartielle = listeTotale.filtrerAction(codeReference);
+//        listePartielle = new ListeCotisations();
+        //String code = "vale5";
+        
+        String code = request.getParameter("action");
+        
+        
+        listePartielle = listeTotale.filtrerAction(code);
+        
+        
+
         donneesAction = new DonneesAffichageMM();
         CreationDonneesMM.genererMM(listePartielle, PERIODE_RAPIDE, PERIODE_LENT, donneesAction);
 
 //        String choixPage = request.getParameter("choixPage");
-        String dest = "/samples/Menu.html";
 
-//        String dest = Reference.getDestination();
+        String dest = "/samples/definirDeclancheur.jsp";
+        //String dest = request.getParameter("typeAnalyse");
+        
+        
+        
         HttpSession session = request.getSession();
         session.setAttribute("maListe", donneesAction);
-
-        if (Reference.getOptionAnalyse().equals("Comparaison")) {
-            comparateur1 = listeTotale.filtrerAction(Reference.getComparables()[0]);
-            donneesComp1 = new DonneesAffichageMM();
-            CreationDonneesMM.genererMM(comparateur1, PERIODE_RAPIDE, PERIODE_LENT, donneesComp1);
-
-            comparateur2 = listeTotale.filtrerAction(Reference.getComparables()[1]);
-            donneesComp2 = new DonneesAffichageMM();
-            CreationDonneesMM.genererMM(comparateur2, PERIODE_RAPIDE, PERIODE_LENT, donneesComp2);
-
-            comparateur3 = listeTotale.filtrerAction(Reference.getComparables()[2]);
-            donneesComp3 = new DonneesAffichageMM();
-            CreationDonneesMM.genererMM(comparateur3, PERIODE_RAPIDE, PERIODE_LENT, donneesComp3);
-            
-            session.setAttribute("comp1", donneesComp1);
-            session.setAttribute("comp2", donneesComp2);
-            session.setAttribute("comp3", donneesComp3);
-
-        }
-
-        System.out.println("code: " + codeReference);
+        
+        System.out.println("code: " + code);
         System.out.println("dest: " + dest);
 
         RequestDispatcher disp = getServletContext().getRequestDispatcher(dest);
@@ -118,7 +101,7 @@ public class Debut extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the codeReference.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
