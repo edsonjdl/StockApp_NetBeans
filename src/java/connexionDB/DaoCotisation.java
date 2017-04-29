@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -31,6 +32,9 @@ public class DaoCotisation {
 
     private double valeur1 = 0;
     private double valeur2 = 0;
+    private double valeurRentabilite=0;
+    DecimalFormat formatation = new DecimalFormat("#.##");
+    
     private Rentabilite rent;
 
     private String[] tables = {"bbas3", "bbse3", "bova11", "brkm5", "eqtl3", "flry3", "lren3", "mglu3", "pcar4", "petr4", "radl3", "smle3", "vale5", "wege3"};
@@ -77,10 +81,12 @@ public class DaoCotisation {
 
                 if (date.toString().equals("2017-03-27")) {
                     valeur2 = rset.getDouble(5);
+                    System.out.println(code + " valeur2: " + valeur2);
                 }
 
                 if (date.toString().equals("2016-03-28")) {
                     valeur1 = rset.getDouble(5);
+                    System.out.println(code + " valeur1: " + valeur1);
                 }
 
                 // ATENCAO AS DATAS. O MES COMECA DO 0 (ZERO)=> JANEIRO = 0.
@@ -94,8 +100,13 @@ public class DaoCotisation {
                 connexion.close();
             }
             
-            rent.setCodeAction(code);
-            rent.setValeurRentabilite(0);
+            
+            valeurRentabilite = ((int)(((valeur2/valeur1)-1)*10000))/100.0;
+            
+            valeurRentabilite = Double.valueOf(formatation.format(valeurRentabilite));
+            
+            rent.setCodeAction(code.toUpperCase());
+            rent.setValeurRentabilite(valeurRentabilite);
             infoRentabilite.add(rent);
 
             valeur1 = 0;
