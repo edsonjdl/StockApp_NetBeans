@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,154 +30,75 @@
 			var chartData4 = [];
 
             function generateChartData() {
-                //    var firstDate = new Date();
-                //    firstDate.setDate(firstDate.getDate() - 1000);
-                //    firstDate.setHours(0, 0, 0, 0);
 
                 var firstDate = new Date(2012, 0, 1);
                 firstDate.setDate(firstDate.getDate() - 500);
                 firstDate.setHours(0, 0, 0, 0);
 
-                // Action principal
-            <c:forEach var="item" items="${maListe}"  varStatus="loop">
-                var newDate = new Date(firstDate);
-                newDate.setDate(newDate.getDate() + ${loop.index});
+                // Action principale
+            <c:forEach var="item1" items="${maListe}"  varStatus="loop1">
+                var newDate1 = new Date(firstDate);
+                newDate1.setDate(newDate1.getDate() + ${loop1.index});
 
-                var open = ${item.ouverture};
-                var close = '${item.fermeture}';
-                var low = '${item.min}';
-                var high = '${item.max}';
-                var volume = '${item.volFin}';
-                var signal = '${item.signal}';
+                var value1 = '${item1.fermeture}';
+                var volume1 = '${item1.volFin}';                
 
-                chartData1[${loop.index}] = ({
-                    date: newDate,
-                    open: open,
-                    close: close,
-                    high: high,
-                    low: low,
-                    volume: volume,
-                    signal: signal
+                chartData1.push({
+                    date: newDate1,
+                    close: value1,
+                    volume: volume1,
                 });
-
-                <%--
-                 //var i = ${loop.index};
-                --%>
-
 
             </c:forEach>
 
                 // Comparateur 1
-            <c:forEach var="item" items="${comp1}"  varStatus="loop">
-                var newDate = new Date(firstDate);
-                newDate.setDate(newDate.getDate() + ${loop.index});
+            <c:forEach var="item2" items="${comp1}"  varStatus="loop2">
+                var newDate2 = new Date(firstDate);
+                newDate2.setDate(newDate2.getDate() + ${loop2.index});
 
-                var open = ${item.ouverture};
-                var close = '${item.fermeture}';
-                var low = '${item.min}';
-                var high = '${item.max}';
-                var volume = '${item.volFin}';
-                var signal = '${item.signal}';
+                var value2 = '${item2.fermeture}';
+                var volume2 = '${item2.volFin}';
 
-                chartData2[${loop.index}] = ({
-                    date: newDate,
-                    open: open,
-                    close: close,
-                    high: high,
-                    low: low,
-                    volume: volume,
-                    signal: signal
+                chartData2.push({
+                    date: newDate2,
+                    value: value2 ,
+                    volume: volume2
                 });
-                <%--
-                                //var i = ${loop.index};
-                --%>
 
             </c:forEach>
                 
                                 // Comparateur 2
-            <c:forEach var="item" items="${comp2}"  varStatus="loop">
-                var newDate = new Date(firstDate);
-                newDate.setDate(newDate.getDate() + ${loop.index});
+            <c:forEach var="item3" items="${comp2}"  varStatus="loop3">
+                var newDate3 = new Date(firstDate);
+                newDate3.setDate(newDate3.getDate() + ${loop3.index});
 
-                var open = ${item.ouverture};
-                var close = '${item.fermeture}';
-                var low = '${item.min}';
-                var high = '${item.max}';
-                var volume = '${item.volFin}';
-                var signal = '${item.signal}';
+                var value3 = '${item3.fermeture}';
+                var volume3 = '${item3.volFin}';
 
-                chartData3[${loop.index}] = ({
-                    date: newDate,
-                    open: open,
-                    close: close,
-                    high: high,
-                    low: low,
-                    volume: volume,
-                    signal: signal
+                chartData3.push({
+                    date: newDate3,
+                    value: value3 ,
+                    volume: volume3
                 });
-                <%--
-                                //var i = ${loop.index};
-                --%>
 
             </c:forEach>
                 
                                 // Comparateur 3
-            <c:forEach var="item" items="${comp3}"  varStatus="loop">
-                var newDate = new Date(firstDate);
-                newDate.setDate(newDate.getDate() + ${loop.index});
+            <c:forEach var="item4" items="${comp3}"  varStatus="loop4">
+                var newDate4 = new Date(firstDate);
+                newDate4.setDate(newDate4.getDate() + ${loop4.index});
 
-                var open = ${item.ouverture};
-                var close = '${item.fermeture}';
-                var low = '${item.min}';
-                var high = '${item.max}';
-                var volume = '${item.volFin}';
-                var signal = '${item.signal}';
+                var value4 = '${item4.fermeture}';
+                var volume4 = '${item4.volFin}';
 
-                chartData4[${loop.index}] = ({
-                    date: newDate,
-                    open: open,
-                    close: close,
-                    high: high,
-                    low: low,
-                    volume: volume,
-                    signal: signal
+                chartData4.push({
+                    date: newDate4,
+                    value: value4 ,
+                    volume: volume4
                 });
-                <%--
-                                //var i = ${loop.index};
-                --%>
 
             </c:forEach>
 
-            <%--
-
-                                //var a2 = Math.round(Math.random() * (100 + i)) + 200 + i;
-               // var a2 = ${item.mmRapide.valeur}; 
-                //var b2 = Math.round(Math.random() * (1000 + i)) + 600 + i * 2;
-
-                //var a3 = Math.round(Math.random() * (100 + i)) + 200;
-                var a3 = ${item.mmLente.valeur};
-                var b3 = Math.round(Math.random() * (1000 + i)) + 600 + i * 2;
-
-                var a4 = Math.round(Math.random() * (100 + i)) + 200 + i;
-                var b4 = Math.round(Math.random() * (100 + i)) + 600 + i;
-
-
-                chartData2.push({
-                    date: newDate,
-                    value: a2,
-                    volume: b2
-                });
-                chartData3.push({
-                    date: newDate,
-                    value: a3,
-                    volume: b3
-                });
-                chartData4.push({
-                    date: newDate,
-                    value: a4,
-                    volume: b4
-                });
-            --%>
 
             }
 
@@ -185,7 +108,7 @@
 				// DATASETS //////////////////////////////////////////
 				// create data sets first
 				var dataSet1 = new AmCharts.DataSet();
-				dataSet1.title = "first data set";
+				dataSet1.title = "Action principale";
 				dataSet1.fieldMappings = [{
 					fromField: "value",
 					toField: "value"
@@ -197,7 +120,7 @@
 				dataSet1.categoryField = "date";
 
 				var dataSet2 = new AmCharts.DataSet();
-				dataSet2.title = "second data set";
+				dataSet2.title = "Comparateur 2";
 				dataSet2.fieldMappings = [{
 					fromField: "value",
 					toField: "value"
@@ -209,7 +132,7 @@
 				dataSet2.categoryField = "date";
 
 				var dataSet3 = new AmCharts.DataSet();
-				dataSet3.title = "third data set";
+				dataSet3.title = "Comparateur 3";
 				dataSet3.fieldMappings = [{
 					fromField: "value",
 					toField: "value"
@@ -221,7 +144,7 @@
 				dataSet3.categoryField = "date";
 
 				var dataSet4 = new AmCharts.DataSet();
-				dataSet4.title = "fourth data set";
+				dataSet4.title = "Comparateur 4";
 				dataSet4.fieldMappings = [{
 					fromField: "value",
 					toField: "value"

@@ -57,6 +57,10 @@ public class Debut extends HttpServlet {
             throws ServletException, IOException {
 
         System.out.println("Servlet Debut");
+        String codeReference = Reference.getCodeAction();
+        
+        
+        
         // 1 - Creation des objets Cotisation et une liste de cotisation
         c = new Cotisation();
         listeTotale = new ListeCotisations();
@@ -78,17 +82,16 @@ public class Debut extends HttpServlet {
 //        listePartielle = new ListeCotisations();
         //String codeReference = "vale5";
 //        String codeReference = request.getParameter("action");
-        String codeReference = Reference.getCodeAction();
-
-        listePartielle = listeTotale.filtrerAction(codeReference);
-        donneesAction = new DonneesAffichageMM();
-        CreationDonneesMM.genererMM(listePartielle, PERIODE_RAPIDE, PERIODE_LENT, donneesAction);
 
 //        String choixPage = request.getParameter("choixPage");
         String dest = "/samples/Menu.html";
 
 //        String dest = Reference.getDestination();
         HttpSession session = request.getSession();
+        
+        listePartielle = listeTotale.filtrerAction(Reference.getCodeAction());
+        donneesAction = new DonneesAffichageMM();
+        CreationDonneesMM.genererMM(listePartielle, PERIODE_RAPIDE, PERIODE_LENT, donneesAction);
         session.setAttribute("maListe", donneesAction);
 
         if (Reference.getOptionAnalyse().equals("Comparaison")) {
@@ -107,10 +110,17 @@ public class Debut extends HttpServlet {
             session.setAttribute("comp1", donneesComp1);
             session.setAttribute("comp2", donneesComp2);
             session.setAttribute("comp3", donneesComp3);
-
+            
         }
+        
+        
+        
+        donneesAction.afficherDonneesMM();
 
         System.out.println("code: " + codeReference);
+        System.out.println("comp1: " + Reference.getComparables()[0]);
+        System.out.println("comp2: " + Reference.getComparables()[1]);
+        System.out.println("comp3: " + Reference.getComparables()[2]);
         System.out.println("dest: " + dest);
 
         RequestDispatcher disp = getServletContext().getRequestDispatcher(dest);
