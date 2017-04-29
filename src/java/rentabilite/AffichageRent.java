@@ -11,9 +11,9 @@ package rentabilite;
  */
 public class AffichageRent {
     
-    private static DonneesRentabilite infoRentabilite;
+    private  DonneesRentabilite infoRentabilite;
 
-public static void preparerAffichage(DonneesRentabilite info){
+public  void preparerAffichage(DonneesRentabilite info){
     
     infoRentabilite = new DonneesRentabilite();   
     infoRentabilite = info;

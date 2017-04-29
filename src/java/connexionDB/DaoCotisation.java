@@ -29,9 +29,9 @@ public class DaoCotisation {
 
     private Cotisation cotisation;
 
-    double valeur1 = 0;
-    double valeur2 = 0;
-    Rentabilite rent;
+    private double valeur1 = 0;
+    private double valeur2 = 0;
+    private Rentabilite rent;
 
     private String[] tables = {"bbas3", "bbse3", "bova11", "brkm5", "eqtl3", "flry3", "lren3", "mglu3", "pcar4", "petr4", "radl3", "smle3", "vale5", "wege3"};
 
@@ -46,15 +46,11 @@ public class DaoCotisation {
     }
 
     public void chargeRentabilite(DonneesRentabilite infoRentabilite) throws SQLException, ClassNotFoundException, java.io.IOException {
-
-        rent = new Rentabilite();
-        
+    
+       
         for (int i = 0; i < tables.length; i++) {
             lireBD(tables[i], infoRentabilite);
-            rent.setCodeAction(tables[i]);
-            rent.setValeurRentabilite((valeur2 / valeur1) - 1);
-            
-            infoRentabilite.add(rent);
+
         }
         
         
@@ -72,6 +68,8 @@ public class DaoCotisation {
                     + "`" + code + "`.`data`, `" + code + "`.`abertura`, `" + code + "`.`max`, `" + code + "`.`min`, `" + code + "`.`fechamento`, `" + code + "`.`volFin`, `" + code + "`.`volQte` "//,  job_id "
                     + "FROM `acoes`.`" + code + "` ");
 
+            rent = new Rentabilite();
+            
             while (rset.next()) {
 
                 
@@ -95,6 +93,10 @@ public class DaoCotisation {
             if (connexion != null) {
                 connexion.close();
             }
+            
+            rent.setCodeAction(code);
+            rent.setValeurRentabilite(0);
+            infoRentabilite.add(rent);
 
             valeur1 = 0;
             valeur2 = 0;
@@ -145,6 +147,8 @@ public class DaoCotisation {
             if (connexion != null) {
                 connexion.close();
             }
+            
+
 
         }
     }
