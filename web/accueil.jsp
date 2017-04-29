@@ -68,7 +68,7 @@
                                                     <option value="wege3">WEGE3</option>
                                                 </select></td>
                                                 <td id="stylishTD">
-                                                    <a href="">Consulter la liste des actions</a>
+                                                    <a href="RapportActions">Plus d'informations par rapport les actions disponibles.</a>
                                                 </td>
                                         </tr>
                                     </table>  
@@ -93,8 +93,7 @@
 
         <footer class="container text-center roundBottom">
             <p>© 2017 Tous droits réservés </p>
-            <!--<a href="Debut">Debut</a>-->
-            <a href="Debut">Debut</a>
+            <!--<a href="Debut">Debut</a>-->           
         </footer>
 
     </body>

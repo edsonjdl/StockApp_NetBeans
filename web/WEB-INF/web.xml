@@ -4,9 +4,17 @@
         <servlet-name>Debut</servlet-name>
         <servlet-class>controleur.Debut</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RapportActions</servlet-name>
+        <servlet-class>controleur.RapportActions</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Debut</servlet-name>
         <url-pattern>/Debut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RapportActions</servlet-name>
+        <url-pattern>/RapportActions</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

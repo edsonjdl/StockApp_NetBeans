@@ -16,14 +16,14 @@ import java.util.Date;
 public class Cotisation {
     
     private String codeAction; 
-//            private Calendar date;
+            private Date date;
 //    private double ouverture, max, min, fermeture, volFin, volQte;
-    private double ouverture, max, min, fermeture, volFin;
+    private double ouverture, max, min, fermeture, volFin, rentabilite;
 
     public Cotisation() {
     }
 
-    public Cotisation(Calendar date, double abertura, double max, double min, double fechamento, double volFin, double volQte) {
+    public Cotisation(Date date, double abertura, double max, double min, double fechamento, double volFin, double volQte) {
 //        this.codeAction = codeAction;
 //        this.date = date;
         this.ouverture = abertura;
@@ -51,14 +51,24 @@ public class Cotisation {
     public void setCodeAction(String codeAction) {
         this.codeAction = codeAction;
     }
-//
-//    public Calendar getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(Calendar date) {
-//        this.date = date;
-//    }
+
+    public double getRentabilite() {
+        return rentabilite;
+    }
+
+    public void setRentabilite(double rentabilite) {
+        this.rentabilite = rentabilite;
+    }
+    
+    
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public double getOuverture() {
         return ouverture;
