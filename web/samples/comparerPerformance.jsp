@@ -45,9 +45,11 @@
 
                 chartData1.push({
                     date: newDate1,
-                    close: value1,
-                    volume: volume1,
+                    value: value1 ,
+                    volume: volume1
                 });
+                
+
 
             </c:forEach>
 
