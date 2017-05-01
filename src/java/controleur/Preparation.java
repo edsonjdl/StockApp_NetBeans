@@ -77,11 +77,11 @@ public class Preparation extends HttpServlet {
 
         // Definition de la reference que la servlet Debut ira utiliser
         if (Reference.getOptionAnalyse().equals("Historique")) {
-            Reference.setDestination("/StockApp_NetBeans/samples/afficherHistorique.jsp");
+            Reference.setDestination("/StockApp_NetBeans/pages/afficherHistorique.jsp");
         } else if (Reference.getOptionAnalyse().equals("Comparaison")) {
-            Reference.setDestination("/StockApp_NetBeans/samples/comparerPerformance.jsp");
+            Reference.setDestination("/StockApp_NetBeans/pages/comparerPerformance.jsp");
         } else {
-            Reference.setDestination("/StockApp_NetBeans/samples/definirDeclancheur.jsp");
+            Reference.setDestination("/StockApp_NetBeans/pages/definirDeclancheur.jsp");
         }
 
         System.out.println("Preparation-dest: " + dest);

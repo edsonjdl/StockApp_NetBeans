@@ -1,20 +1,23 @@
 <%-- 
-    Document   : afficherHistorique
-    Created on : 2017-04-24, 14:35:33
-    Author     : 
+    Document   : stockAddRemovePanel
+    Created on : 2017-04-24, 16:04:57
+    Author     : 1695625
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>amStock Example</title>
         <link rel="stylesheet" href="../amcharts/style.css"
               type="text/css">
-        <script src="amcharts/amcharts.js" type="text/javascript"></script>
-        <script src="amcharts/serial.js" type="text/javascript"></script>
-        <script src="amcharts/amstock.js" type="text/javascript"></script>
+        <script src="../amcharts/amcharts.js" type="text/javascript"></script>
+        <script src="../amcharts/serial.js" type="text/javascript"></script>
+        <script src="../amcharts/amstock.js" type="text/javascript"></script>
 
         <script>
             AmCharts.ready(function () {
@@ -28,71 +31,41 @@
             var stockPanel;
 
             function generateChartData() {
-                var firstDate = new Date();
+            
+                var firstDate = new Date(2012, 0, 1);
+                firstDate.setDate(firstDate.getDate() - 500);
                 firstDate.setHours(0, 0, 0, 0);
-                firstDate.setDate(firstDate.getDate() - 2000);
 
-                for (var i = 0; i < 2000; i++) {
-                    var newDate = new Date(firstDate);
+            <c:forEach var="item" items="${maListe}"  varStatus="loop">
+                var newDate = new Date(firstDate);
+                newDate.setDate(newDate.getDate() + ${loop.index});
 
-                    newDate.setDate(newDate.getDate() + i);
-
-                    var open = Math.round(Math.random() * (30) + 100);
-                    var close = open + Math.round(Math.random() * (15) - Math.random() * 10);
-
-                    var low;
-                    if (open < close) {
-                        low = open - Math.round(Math.random() * 5);
-                    } else {
-                        low = close - Math.round(Math.random() * 5);
-                    }
-
-                    var high;
-                    if (open < close) {
-                        high = close + Math.round(Math.random() * 5);
-                    } else {
-                        high = open + Math.round(Math.random() * 5);
-                    }
-
-                    var volume = Math.round(Math.random() * (1000 + i)) + 100 + i;
-
-
-
-                    chartData[i] = ({
-                        date: newDate,
-                        open: open,
-                        close: close,
-                        high: high,
-                        low: low,
-                        volume: volume
-                    });
-                }
-            }
-
-            function generateChartData2(i, ouv, max, min, ferm, vol) {
-                var firstDate = new Date();
-                firstDate.setHours(0, 0, 0, 0);
-                firstDate.setDate(firstDate.getDate() - 2000);
-                    var newDate = new Date(firstDate);
-                    newDate.setDate(newDate.getDate() + i);
-                    
-                    
-                    var open=ouv;
-                    var close=ferm;
-                    var low=min;
-                    var high=max;
-                    var volume=vol;
-                    
-                    chartData[i] = ({
-                        date: newDate,
-                        open: open,
-                        close: close,
-                        high: high,
-                        low: low,
-                        volume: volume
-                    });
+                var open = ${item.ouverture};
+                var close = '${item.fermeture}';
+                var low = '${item.min}';
+                var high = '${item.max}';
+                var volume = '${item.volFin}';
+                var signal = '${item.signal}';
                 
+                var i = ${loop.index};
+
+                chartData[i] = ({
+                    date: newDate,
+                    open: open,
+                    close: close,
+                    high: high,
+                    low: low,
+                    volume: volume,
+                    signal: signal
+                });
+               
+
+            </c:forEach>
+
+
             }
+
+
 
             function createStockChart() {
                 chart = new AmCharts.AmStockChart();
@@ -128,7 +101,7 @@
 
                 // PANELS ///////////////////////////////////////////
                 stockPanel = new AmCharts.StockPanel();
-                stockPanel.title = "Valeur";
+                stockPanel.title = "Value";
 
                 // graph of first stock panel
                 var graph = new AmCharts.StockGraph();
@@ -245,6 +218,10 @@
     <input type="button" disabled="true" id="removePanelButton" onclick="removePanel()"
            value="Supprimer panneau">
     <div id="chartdiv" style="width:100%; height:600px;"></div>
+    
+            </br>
+            </br>
+        <a href="accueil.jsp">Retour</a>
 </body>
 
 </html>

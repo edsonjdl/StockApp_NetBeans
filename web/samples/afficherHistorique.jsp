@@ -214,9 +214,9 @@
         </script>
     </head>
     <body style="background-color:#FFFFFF">
-    <input type="button" id="addPanelButton" onclick="addPanel()" value="add panel">
+    <input type="button" id="addPanelButton" onclick="addPanel()" value="Ajouter panneau">
     <input type="button" disabled="true" id="removePanelButton" onclick="removePanel()"
-           value="remove panel">
+           value="Supprimer panneau">
     <div id="chartdiv" style="width:100%; height:600px;"></div>
     
             </br>
