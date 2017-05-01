@@ -100,6 +100,8 @@
             <input type='hidden' name="comparable" value='Oui' />
             <input type='hidden' name="typeAnalyse" value='Comparaison' />
         </form>
-
+            </br>
+            </br>
+        <a href="accueil.jsp">Retour</a>
     </body>
 </html>

@@ -30,9 +30,9 @@
             var chartData3 = [];
             var chartData4 = [];
 
-            
+
             function generateChartData() {
-           
+
                 var firstDate = new Date(2012, 0, 1);
                 firstDate.setDate(firstDate.getDate() - 500);
                 firstDate.setHours(0, 0, 0, 0);
@@ -63,7 +63,7 @@
                 var i = ${loop.index};
 
                 //var a2 = Math.round(Math.random() * (100 + i)) + 200 + i;
-                var a2 = ${item.mmRapide.valeur}; 
+                var a2 = ${item.mmRapide.valeur};
                 var b2 = Math.round(Math.random() * (1000 + i)) + 600 + i * 2;
 
                 //var a3 = Math.round(Math.random() * (100 + i)) + 200;
@@ -89,7 +89,7 @@
                     value: a4,
                     volume: b4
                 });
-                
+
 
             </c:forEach>
 
@@ -123,7 +123,7 @@
                     }, {
                         fromField: "value",
                         toField: "value"
-                        }, {
+                    }, {
                         fromField: "signal",
                         toField: "signal"
                     }];
@@ -280,8 +280,8 @@
 
 
                 // EVENTS - Créer un type Event qui sera generé selon une condition (prototype)
-                
-                
+
+
                 var e0 = {
                     date: new Date(2010, 8, 19),
                     type: "sign",
@@ -367,40 +367,40 @@
                     text: "Longer text can\nalso be displayed",
                     description: "This is description of an event"
                 };
-                        
-            // dataSet1.stockEvents = [e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10];
+
+                // dataSet1.stockEvents = [e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10];
                 //var evenements = [e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10];
-   
-               var evenements = [];
-               
-               
-var arrayLength = chartData1.length;
 
-for (var i = 0; i < arrayLength; i++) {
-    
-    		    if(chartData1[i].signal === "achat"){                   
-                    evenements.push({
-                    date: chartData1[i].date,
-                    type: "arrowUp",
-                    backgroundColor: "#00CC00",
-                    graph: graph1,
-                    description: "This is description of an event"
-                    });
-                } else if(chartData1[i].signal === "vente"){
-                    
-                    evenements.push({
-                    date: chartData1[i].date,
-                    type: "arrowDown",
-                    backgroundColor: "#CC0000",
-                    graph: graph1,
-                    description: "This is description of an event"
-                });
-            }
-}
+                var evenements = [];
 
 
+                var arrayLength = chartData1.length;
 
-dataSet1.stockEvents = evenements;
+                for (var i = 0; i < arrayLength; i++) {
+
+                    if (chartData1[i].signal === "achat") {
+                        evenements.push({
+                            date: chartData1[i].date,
+                            type: "arrowUp",
+                            backgroundColor: "#00CC00",
+                            graph: graph1,
+                            description: "This is description of an event"
+                        });
+                    } else if (chartData1[i].signal === "vente") {
+
+                        evenements.push({
+                            date: chartData1[i].date,
+                            type: "arrowDown",
+                            backgroundColor: "#CC0000",
+                            graph: graph1,
+                            description: "This is description of an event"
+                        });
+                    }
+                }
+
+
+
+                dataSet1.stockEvents = evenements;
 
                 chart.write('chartdiv');
             }
@@ -408,6 +408,10 @@ dataSet1.stockEvents = evenements;
     </head>
     <body style="background-color:#FFFFFF">
         <div id="chartdiv" style="width:100%; height:600px;"></div>
-    </body>
+
+        </br>
+        </br>
+    <a href="../accueil.jsp">Retour</a>
+</body>
 
 </html>

@@ -103,7 +103,7 @@ public class DaoCotisation {
             
             valeurRentabilite = ((int)(((valeur2/valeur1)-1)*10000))/100.0;
             
-            valeurRentabilite = Double.valueOf(formatation.format(valeurRentabilite));
+            //valeurRentabilite = Double.valueOf(formatation.format(valeurRentabilite));
             
             rent.setCodeAction(code.toUpperCase());
             rent.setValeurRentabilite(valeurRentabilite);

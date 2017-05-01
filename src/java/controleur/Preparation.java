@@ -36,10 +36,15 @@ public class Preparation extends HttpServlet {
         
         System.out.println("Servlet Preparation");
         
-        String[] choix = {"", "", ""};
+        String[] choix = {"x", "x", "x"};
         String debut = request.getParameter("comparable");
         System.out.println("comparable: " + debut);
         String dest = "/Debut";
+        
+            Reference.setComparables(choix);
+        System.out.println("comp1: " + Reference.getComparables()[0]);
+        System.out.println("comp2: " + Reference.getComparables()[1]);
+        System.out.println("comp3: " + Reference.getComparables()[2]);
         
         String analyse = request.getParameter("typeAnalyse");
         Reference.setOptionAnalyse(analyse);
@@ -57,7 +62,7 @@ public class Preparation extends HttpServlet {
             
 //        codeReference = request.getParameter("action");
 //        Reference.setCodeAction(codeReference);
-            
+        
             dest = "/choixComparaison.jsp";
         } else {
             choix[0] = request.getParameter("choix1");
@@ -72,11 +77,11 @@ public class Preparation extends HttpServlet {
 
         // Definition de la reference que la servlet Debut ira utiliser
         if (Reference.getOptionAnalyse().equals("Historique")) {
-            Reference.setDestination("/samples/afficherHistorique.jsp");
+            Reference.setDestination("/StockApp_NetBeans/samples/afficherHistorique.jsp");
         } else if (Reference.getOptionAnalyse().equals("Comparaison")) {
-            Reference.setDestination("/samples/comparerPerformance.jsp");
+            Reference.setDestination("/StockApp_NetBeans/samples/comparerPerformance.jsp");
         } else {
-            Reference.setDestination("/samples/definirDeclancheur.jsp");
+            Reference.setDestination("/StockApp_NetBeans/samples/definirDeclancheur.jsp");
         }
 
         System.out.println("Preparation-dest: " + dest);

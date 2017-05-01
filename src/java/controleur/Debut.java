@@ -58,7 +58,9 @@ public class Debut extends HttpServlet {
 
         System.out.println("Servlet Debut");
         String codeReference = Reference.getCodeAction();
+        String destin = Reference.getDestination();
         
+
         
         
         // 1 - Creation des objets Cotisation et une liste de cotisation
@@ -111,20 +113,31 @@ public class Debut extends HttpServlet {
             session.setAttribute("comp2", donneesComp2);
             session.setAttribute("comp3", donneesComp3);
             
+            session.setAttribute("codeReference", codeReference.toUpperCase());
+            session.setAttribute("comparateur1", Reference.getComparables()[0].toUpperCase());
+            session.setAttribute("comparateur2", Reference.getComparables()[1].toUpperCase());
+            session.setAttribute("comparateur3", Reference.getComparables()[2].toUpperCase());
+            
         }
         
         
         
-        donneesAction.afficherDonneesMM();
+//        donneesAction.afficherDonneesMM();
 
         System.out.println("code: " + codeReference);
         System.out.println("comp1: " + Reference.getComparables()[0]);
         System.out.println("comp2: " + Reference.getComparables()[1]);
         System.out.println("comp3: " + Reference.getComparables()[2]);
         System.out.println("dest: " + dest);
+        System.out.println("Destination: " + destin);
 
-        RequestDispatcher disp = getServletContext().getRequestDispatcher(dest);
-        disp.forward(request, response);
+//        RequestDispatcher disp = getServletContext().getRequestDispatcher(dest);
+//        disp.forward(request, response);
+
+
+
+        
+        response.sendRedirect(destin);
 
     }
 

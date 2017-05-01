@@ -218,6 +218,10 @@
     <input type="button" disabled="true" id="removePanelButton" onclick="removePanel()"
            value="remove panel">
     <div id="chartdiv" style="width:100%; height:600px;"></div>
+    
+            </br>
+            </br>
+        <a href="../accueil.jsp">Retour</a>
 </body>
 
 </html>
