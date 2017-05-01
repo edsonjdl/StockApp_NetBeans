@@ -15,9 +15,9 @@
         <title>amStock Example</title>
         <link rel="stylesheet" href="../amcharts/style.css"	type="text/css">
 
-        <script src="../amcharts/amcharts.js" type="text/javascript"></script>
-        <script src="../amcharts/serial.js" type="text/javascript"></script>
-        <script src="../amcharts/amstock.js" type="text/javascript"></script>
+        <script src="amcharts/amcharts.js" type="text/javascript"></script>
+        <script src="amcharts/serial.js" type="text/javascript"></script>
+        <script src="amcharts/amstock.js" type="text/javascript"></script>
 
         <script>
             AmCharts.ready(function () {

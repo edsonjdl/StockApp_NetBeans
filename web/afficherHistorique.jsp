@@ -12,9 +12,9 @@
         <title>amStock Example</title>
         <link rel="stylesheet" href="../amcharts/style.css"
               type="text/css">
-        <script src="../amcharts/amcharts.js" type="text/javascript"></script>
-        <script src="../amcharts/serial.js" type="text/javascript"></script>
-        <script src="../amcharts/amstock.js" type="text/javascript"></script>
+        <script src="amcharts/amcharts.js" type="text/javascript"></script>
+        <script src="amcharts/serial.js" type="text/javascript"></script>
+        <script src="amcharts/amstock.js" type="text/javascript"></script>
 
         <script>
             AmCharts.ready(function () {
@@ -128,7 +128,7 @@
 
                 // PANELS ///////////////////////////////////////////
                 stockPanel = new AmCharts.StockPanel();
-                stockPanel.title = "Value";
+                stockPanel.title = "Valeur";
 
                 // graph of first stock panel
                 var graph = new AmCharts.StockGraph();
@@ -241,9 +241,9 @@
         </script>
     </head>
     <body style="background-color:#FFFFFF">
-    <input type="button" id="addPanelButton" onclick="addPanel()" value="add panel">
+    <input type="button" id="addPanelButton" onclick="addPanel()" value="Ajouter panneau">
     <input type="button" disabled="true" id="removePanelButton" onclick="removePanel()"
-           value="remove panel">
+           value="Supprimer panneau">
     <div id="chartdiv" style="width:100%; height:600px;"></div>
 </body>
 
