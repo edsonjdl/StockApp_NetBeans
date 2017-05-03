@@ -5,12 +5,14 @@
  */
 package connexionDB;
 
+import donneesAffichage.Reference;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -18,6 +20,8 @@ import modele.Cotisation;
 import modele.ListeCotisations;
 import rentabilite.DonneesRentabilite;
 import rentabilite.Rentabilite;
+import webService.ChargeCotisations;
+import webService.CotisationSource;
 
 /**
  *
@@ -39,14 +43,20 @@ public class DaoCotisation {
 
     private String[] tables = {"bbas3", "bbse3", "bova11", "brkm5", "eqtl3", "flry3", "lren3", "mglu3", "pcar4", "petr4", "radl3", "smle3", "vale5", "wege3"};
 
+    // "bbas3"1, "bbse3"2, "bova11"3, "brkm5"4, "eqtl3"5, "flry3"6, "lren37", "mglu3"8, "pcar4"9, "petr4"10, "radl3"11, "smle3"12, "vale5"13, "wege3"14};
+    
     public DaoCotisation() {
     }
 
     public void chargeDonnees(ListeCotisations liste) throws SQLException, ClassNotFoundException, java.io.IOException {
+        
+        ChargeCotisations.start();
 
         for (int i = 0; i < tables.length; i++) {
-            lireBD(tables[i], liste);
+            lireBD2(tables[i], liste);
         }
+        
+        
     }
 
     public void chargeRentabilite(DonneesRentabilite infoRentabilite) throws SQLException, ClassNotFoundException, java.io.IOException {
@@ -163,5 +173,26 @@ public class DaoCotisation {
 
         }
     }
+    
+    public void lireBD2(String code, ListeCotisations liste){
+        
+        System.out.println("lireBD2---------------------------" + code);
+        
+        int codeAction = Arrays.asList(tables).indexOf(code)+1;
+        
+        for(CotisationSource cs: Reference.getDonneeSource()){
+            if(cs.getCodeAction()==codeAction){
+            cotisation = new Cotisation(cs);
+            cotisation.setCodeAction(code);
+            liste.ajouterCotisation(cotisation);
+            }
+
+        }
+        
+        
+        
+        
+    }
+           
 
 }

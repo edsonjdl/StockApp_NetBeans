@@ -80,7 +80,8 @@ public class Debut extends HttpServlet {
             Logger.getLogger(Debut.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-//        listeTotale.afficherCotisation();
+        System.out.println("Afficher cotisation---------------------------");
+               listeTotale.afficherCotisation();
 //        listePartielle = new ListeCotisations();
         //String codeReference = "vale5";
 //        String codeReference = request.getParameter("action");
@@ -122,7 +123,7 @@ public class Debut extends HttpServlet {
         
         
         
-//        donneesAction.afficherDonneesMM();
+        donneesAction.afficherDonneesMM();
 
         System.out.println("code: " + codeReference);
         System.out.println("comp1: " + Reference.getComparables()[0]);

@@ -7,6 +7,7 @@ package modele;
 
 import java.util.Calendar;
 import java.util.Date;
+import webService.CotisationSource;
 //import java.sql.Date;
 
 /**
@@ -40,7 +41,20 @@ public class Cotisation {
         this.min = min;
         this.fermeture = fermeture;
         this.volFin = volFin;
+        
     }
+
+    public Cotisation(CotisationSource source) {        
+        this.date = source.getDateCotisation();
+        this.ouverture = source.getOuverture();
+        this.fermeture = source.getFermeture();
+        this.max = source.getMaxval();
+        this.min = source.getMinVal();
+        this.volFin = source.getVolFinance();
+        this.codeAction = "Non défini";
+    }
+    
+    
     
     
 

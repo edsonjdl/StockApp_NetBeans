@@ -5,6 +5,8 @@
  */
 package donneesAffichage;
 
+import webService.DonneesSource;
+
 /**
  *
  * @author edson
@@ -16,6 +18,10 @@ public class Reference {
     private static String[] comparables={};
     
     private static String destination="";
+    
+    private static String[] tables = {"bbas3", "bbse3", "bova11", "brkm5", "eqtl3", "flry3", "lren3", "mglu3", "pcar4", "petr4", "radl3", "smle3", "vale5", "wege3"};
+    
+    private static DonneesSource donneeSource;
 
     public static String getCodeAction() {
         return codeAction;
@@ -48,6 +54,24 @@ public class Reference {
     public static void setDestination(String destination) {
         Reference.destination = destination;
     }
+
+    public static String[] getTables() {
+        return tables;
+    }
+
+    public static void setTables(String[] tables) {
+        Reference.tables = tables;
+    }
+
+    public static DonneesSource getDonneeSource() {
+        return donneeSource;
+    }
+
+    public static void setDonneeSource(DonneesSource donneeSource) {
+        Reference.donneeSource = donneeSource;
+    }
+
+
     
     
     
