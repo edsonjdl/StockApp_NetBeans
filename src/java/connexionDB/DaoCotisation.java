@@ -61,9 +61,10 @@ public class DaoCotisation {
 
     public void chargeRentabilite(DonneesRentabilite infoRentabilite) throws SQLException, ClassNotFoundException, java.io.IOException {
     
-       
+        ChargeCotisations.start();
+        
         for (int i = 0; i < tables.length; i++) {
-            lireBD(tables[i], infoRentabilite);
+            lireBD2(tables[i], infoRentabilite);
 
         }
         
@@ -124,6 +125,49 @@ public class DaoCotisation {
 
         }
     }
+    
+    public void lireBD2(String code, DonneesRentabilite infoRentabilite) {
+        
+        System.out.println("lireBD2----------InfoRentabilite-----------" + code);
+        
+        int codeAction = Arrays.asList(tables).indexOf(code)+1;
+        
+                    rent = new Rentabilite();
+                    
+                    
+            for(CotisationSource cs: Reference.getDonneeSource()){
+            if(cs.getCodeAction()==codeAction){
+                Date date = cs.getDateCotisation();
+
+                if (date.toString().equals("2017-03-27")) {
+                    valeur2 = cs.getFermeture();
+                    System.out.println(code + " valeur2: " + valeur2);
+                }
+
+                if (date.toString().equals("2016-03-28")) {
+                    valeur1 = cs.getFermeture();
+                    System.out.println(code + " valeur1: " + valeur1);
+                }
+
+                // ATENCAO AS DATAS. O MES COMECA DO 0 (ZERO)=> JANEIRO = 0.
+            }
+
+            
+            valeurRentabilite = ((int)(((valeur2/valeur1)-1)*10000))/100.0;
+            
+            //valeurRentabilite = Double.valueOf(formatation.format(valeurRentabilite));
+            
+            rent.setCodeAction(code.toUpperCase());
+            rent.setValeurRentabilite(valeurRentabilite);
+            infoRentabilite.add(rent);
+
+            valeur1 = 0;
+            valeur2 = 0;
+
+        }
+    }
+        
+    
 
     public void lireBD(String code, ListeCotisations liste) throws SQLException, ClassNotFoundException, java.io.IOException {
 
@@ -176,7 +220,7 @@ public class DaoCotisation {
     
     public void lireBD2(String code, ListeCotisations liste){
         
-        System.out.println("lireBD2---------------------------" + code);
+        System.out.println("lireBD2----------LISTE-----------" + code);
         
         int codeAction = Arrays.asList(tables).indexOf(code)+1;
         

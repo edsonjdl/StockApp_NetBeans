@@ -59,7 +59,7 @@ public class ChargeCotisations {
         Reference.setDonneeSource(donneesSource);
         
         System.out.println("Afficher les données---------------------------");
-        Reference.getDonneeSource().afficherDonnees();
+       // Reference.getDonneeSource().afficherDonnees();
 
     }
 

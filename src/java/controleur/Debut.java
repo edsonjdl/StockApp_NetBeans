@@ -81,7 +81,7 @@ public class Debut extends HttpServlet {
         }
 
         System.out.println("Afficher cotisation---------------------------");
-               listeTotale.afficherCotisation();
+        //       listeTotale.afficherCotisation();
 //        listePartielle = new ListeCotisations();
         //String codeReference = "vale5";
 //        String codeReference = request.getParameter("action");
