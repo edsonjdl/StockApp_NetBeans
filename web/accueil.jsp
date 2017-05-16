@@ -36,13 +36,13 @@
                     <div class="col-sm-8 text-left"> 
                         <br><br>
 
-                        <!--<c:if test="${not empty requestScope.errorMessage}" >
+                        <%--<c:if test="${not empty requestScope.errorMessage}" >
                             <div class="alert alert-warning ">
                                 <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
                                 <span class="sr-only">Warning:</span>
                                 <strong> ${requestScope.errorMessage}</strong> 
                             </div>
-                        </c:if>-->
+                        </c:if>--%>
 
                         <div class="margin">
                             <form name="frmTypeAnalyse" action="Preparation" method="post" > 
