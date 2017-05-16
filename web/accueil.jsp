@@ -30,8 +30,8 @@
             <div class="row">						
                 <div class="col-sm-12 text-left contain" > 
                     <div id="welcome" class="row">
-                        <h3>Bienvenue</h3>
-                        <h1 class="police">Stock Analysis</h1><br>
+                        <h3>Stock Analysis</h3>
+                        <h1 class="police">Accueil</h1><br>
                     </div>
                     <div class="col-sm-8 text-left"> 
                         <br><br>

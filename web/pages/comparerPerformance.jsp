@@ -260,7 +260,7 @@
 
         </br>
         </br>
-        <a href="accueil.jsp">Retour</a>
+        <a href="../accueil.jsp">Retour</a>
     </body>
 
 </html>

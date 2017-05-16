@@ -42,5 +42,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/org/tempuri"/>
         <delete dir="${build.generated.dir}/jax-wsCache/WsClient"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-WsClient"/>
+    <target name="wsimport-client-WsClient_1" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WsClient_1"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WsClient_1" destdir="${build.generated.dir}/jax-wsCache/WsClient_1" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WsClient_1/wsdl/localhost_8733/Design_Time_Addresses/StockAnalysis_WCF/Service1/.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8733/Design_Time_Addresses/StockAnalysis_WCF/Service1/?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WsClient_1/wsdl/localhost_8733/Design_Time_Addresses/StockAnalysis_WCF/Service1/.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/WsClient_1"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WsClient_1">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-WsClient_1" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/tempuri"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/WsClient_1"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-WsClient, wsimport-client-WsClient_1"/>
 </project>
