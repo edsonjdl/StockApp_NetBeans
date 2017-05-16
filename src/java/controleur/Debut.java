@@ -59,10 +59,7 @@ public class Debut extends HttpServlet {
         System.out.println("Servlet Debut");
         String codeReference = Reference.getCodeAction();
         String destin = Reference.getDestination();
-        
-
-        
-        
+             
         // 1 - Creation des objets Cotisation et une liste de cotisation
         c = new Cotisation();
         listeTotale = new ListeCotisations();
@@ -80,16 +77,8 @@ public class Debut extends HttpServlet {
             Logger.getLogger(Debut.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        System.out.println("Afficher cotisation---------------------------");
-        //       listeTotale.afficherCotisation();
-//        listePartielle = new ListeCotisations();
-        //String codeReference = "vale5";
-//        String codeReference = request.getParameter("action");
-
-//        String choixPage = request.getParameter("choixPage");
         String dest = "/samples/Menu.html";
 
-//        String dest = Reference.getDestination();
         HttpSession session = request.getSession();
         
         listePartielle = listeTotale.filtrerAction(Reference.getCodeAction());
@@ -120,23 +109,6 @@ public class Debut extends HttpServlet {
             session.setAttribute("comparateur3", Reference.getComparables()[2].toUpperCase());
             
         }
-        
-        
-        
-        donneesAction.afficherDonneesMM();
-
-        System.out.println("code: " + codeReference);
-        System.out.println("comp1: " + Reference.getComparables()[0]);
-        System.out.println("comp2: " + Reference.getComparables()[1]);
-        System.out.println("comp3: " + Reference.getComparables()[2]);
-        System.out.println("dest: " + dest);
-        System.out.println("Destination: " + destin);
-
-//        RequestDispatcher disp = getServletContext().getRequestDispatcher(dest);
-//        disp.forward(request, response);
-
-
-
         
         response.sendRedirect(destin);
 

@@ -57,24 +57,10 @@ public class ChargeCotisations {
         }
 
         Reference.setDonneeSource(donneesSource);
-        
-        System.out.println("Afficher les données---------------------------");
-       // Reference.getDonneeSource().afficherDonnees();
 
     }
 
-    //        public static void main(String[] args) {
-//        List list = getAllActions().getActionStock();
-//        Action actStck = null;
-//
-//        for (Object action : list) {
-//            ActionStock act = (ActionStock) action;
-//
-//            actStck=new Action(act.getCode(),act.getNom().getValue(),act.getQuantite());
-//            System.out.println(actStck);
-//        }
-//    }
-//
+
     private static ArrayOfCotisation getAllCotisations() {
         org.tempuri.StockService service = new org.tempuri.StockService();
         org.tempuri.IStockService port = service.getBasicHttpBindingIStockService();

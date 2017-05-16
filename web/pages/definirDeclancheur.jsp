@@ -28,7 +28,7 @@
             var chartData1 = [];
             var chartData2 = [];
             var chartData3 = [];
-            var chartData4 = [];
+            
 
 
             function generateChartData() {
@@ -84,11 +84,7 @@
                     value: a3,
                     volume: b3
                 });
-                chartData4.push({
-                    date: newDate,
-                    value: a4,
-                    volume: b4
-                });
+    
 
 
             </c:forEach>
@@ -155,26 +151,16 @@
                 dataSet3.dataProvider = chartData3;
                 dataSet3.categoryField = "date";
 
-                var dataSet4 = new AmCharts.DataSet();
-                dataSet4.title = "fourth data set";
-                dataSet4.fieldMappings = [{
-                        fromField: "value",
-                        toField: "value"
-                    }, {
-                        fromField: "volume",
-                        toField: "volume"
-                    }];
-                dataSet4.dataProvider = chartData4;
-                dataSet4.categoryField = "date";
+ 
 
                 // set data sets to the chart
-                chart.dataSets = [dataSet1, dataSet2, dataSet3, dataSet4];
+                chart.dataSets = [dataSet1, dataSet2, dataSet3];
 
                 // PANELS ///////////////////////////////////////////
                 // first stock panel
                 var stockPanel1 = new AmCharts.StockPanel();
                 stockPanel1.showCategoryAxis = false;
-                stockPanel1.title = "Value";
+                stockPanel1.title = "Opportunités de transaction dans les 2 dernières années";
                 stockPanel1.percentHeight = 70;
 
                 // graph of first stock panel
@@ -202,7 +188,7 @@
                 graph1.negativeLineColor = "#db4c3c";
                 graph1.negativeFillColors = "#db4c3c";
                 graph1.fillAlphas = 1;
-                graph1.balloonText = "open:<b>[[open]]</b><br>close:<b>[[close]]</b><br>low:<b>[[low]]</b><br>high:<b>[[high]]</b><br>signal:<b>[[signal]]</b>";
+                graph1.balloonText = "ouverture:<b>[[open]]</b><br>fermeture:<b>[[close]]</b><br>minimum:<b>[[low]]</b><br>maximum:<b>[[high]]</b><br>signal:<b>[[signal]]</b>";
                 graph1.useDataSetColors = false;
 
 
@@ -253,19 +239,19 @@
                 periodSelector.periods = [{
                         period: "DD",
                         count: 10,
-                        label: "10 days"
+                        label: "10 jours "
                     }, {
                         period: "MM",
                         selected: true,
                         count: 1,
-                        label: "1 month"
+                        label: "1 mois"
                     }, {
                         period: "YYYY",
                         count: 1,
-                        label: "1 year"
+                        label: "1 an "
                     }, {
                         period: "YTD",
-                        label: "YTD"
+                        label: "Cette année"
                     }, {
                         period: "MAX",
                         label: "MAX"
@@ -384,7 +370,7 @@
                             type: "arrowUp",
                             backgroundColor: "#00CC00",
                             graph: graph1,
-                            description: "This is description of an event"
+                            description: "Acheter"
                         });
                     } else if (chartData1[i].signal === "vente") {
 
@@ -393,7 +379,7 @@
                             type: "arrowDown",
                             backgroundColor: "#CC0000",
                             graph: graph1,
-                            description: "This is description of an event"
+                            description: "Vendre"
                         });
                     }
                 }

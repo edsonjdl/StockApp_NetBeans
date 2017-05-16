@@ -101,7 +101,7 @@
 
                 // PANELS ///////////////////////////////////////////
                 stockPanel = new AmCharts.StockPanel();
-                stockPanel.title = "Value";
+                stockPanel.title = "Historique de cotisations";
 
                 // graph of first stock panel
                 var graph = new AmCharts.StockGraph();
@@ -116,7 +116,7 @@
                 graph.negativeLineColor = "#db4c3c";
                 graph.negativeFillColors = "#db4c3c";
                 graph.fillAlphas = 1;
-                graph.balloonText = "open:<b>[[open]]</b><br>close:<b>[[close]]</b><br>low:<b>[[low]]</b><br>high:<b>[[high]]</b>";
+                graph.balloonText = "ouverture:<b>[[open]]</b><br>fermeture:<b>[[close]]</b><br>minimum:<b>[[low]]</b><br>maximum:<b>[[high]]</b>";
                 graph.useDataSetColors = false;
                 stockPanel.addStockGraph(graph);
 
@@ -155,19 +155,19 @@
                 periodSelector.periods = [{
                         period: "DD",
                         count: 10,
-                        label: "10 days"
+                        label: "10 jours "
                     }, {
                         period: "MM",
                         selected: true,
                         count: 1,
-                        label: "1 month"
+                        label: "1 mois "
                     }, {
                         period: "YYYY",
                         count: 1,
-                        label: "1 year"
+                        label: "1 an "
                     }, {
                         period: "YTD",
-                        label: "YTD"
+                        label: "Cette année "
                     }, {
                         period: "MAX",
                         label: "MAX"

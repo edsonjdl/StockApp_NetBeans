@@ -13,7 +13,6 @@ import java.util.Calendar;
  */
 public class MoyenneMobile {
     
-//    private Calendar date;
     private double valeur;
 
     public MoyenneMobile() {
@@ -23,22 +22,6 @@ public class MoyenneMobile {
         this.valeur = valeur;
     }
     
-    
-
-//    public MoyenneMobile(Calendar date, double valeur) {
-//        this.date = date;
-//        this.valeur = valeur;
-//    }
-    
-    
-
-//    public Calendar getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(Calendar date) {
-//        this.date = date;
-//    }
 
     public double getValeur() {
         return valeur;

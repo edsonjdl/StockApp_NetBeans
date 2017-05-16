@@ -164,7 +164,7 @@
                 // first stock panel
                 var stockPanel1 = new AmCharts.StockPanel();
                 stockPanel1.showCategoryAxis = false;
-                stockPanel1.title = "Value";
+                stockPanel1.title = "Comparaison de performance";
                 stockPanel1.percentHeight = 70;
 
                 // graph of first stock panel
@@ -226,19 +226,19 @@
                 periodSelector.periods = [{
                         period: "DD",
                         count: 10,
-                        label: "10 days"
+                        label: "10 jours "
                     }, {
                         period: "MM",
                         selected: true,
                         count: 1,
-                        label: "1 month"
+                        label: "1 mois "
                     }, {
                         period: "YYYY",
                         count: 1,
-                        label: "1 year"
+                        label: "1 an "
                     }, {
                         period: "YTD",
-                        label: "YTD"
+                        label: "Cette année "
                     }, {
                         period: "MAX",
                         label: "MAX"

@@ -22,13 +22,13 @@ public class CreationDonneesMM {
 
     public static void genererMM(ListeCotisations listeCotisations, int periodeRapide, int periodeLent, DonneesAffichageMM donneesMM) {
         /*
-        Je dois limiter la fin de la bascule parce que après listeCotisations.size()-N_PERIODES
+        On doit limiter la fin de la bascule parce que après listeCotisations.size()-N_PERIODES
         il n'aura plus d'éléments pour calculer les moyennes
         
          */
         for (int i = periodeLent; i < listeCotisations.size(); i++) {
 
-            //System.out.println("Donnéees de la date: " + listeCotisations.get(i).getDate().get(Calendar.DAY_OF_MONTH) + "-" + (listeCotisations.get(i).getDate().get(Calendar.MONTH) + 1) + "-" + listeCotisations.get(i).getDate().get(Calendar.YEAR));
+            
             // Calcul moyenneLente rapide
             double sommeFermeturesR = 0;
             for (int j = i; j > i - periodeRapide; j--) {
@@ -43,10 +43,6 @@ public class CreationDonneesMM {
             }
 
             double moyenneLente = ((int) ((sommeFermeturesL / periodeLent) * 100)) / 100.0;
-//            System.out.println(listeCotisations.get(i));
-//            System.out.println("moyenne rapide: " + moyenneRapide);
-//            System.out.println("moyenne lente: " + moyenneLente + "\n");
-
 
             mmRapide = new MoyenneMobile(moyenneRapide);
             mmLente = new MoyenneMobile(moyenneLente);

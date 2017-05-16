@@ -49,7 +49,6 @@ public class Preparation extends HttpServlet {
         String analyse = request.getParameter("typeAnalyse");
         Reference.setOptionAnalyse(analyse);
         
-       // String codeReference = Reference.getCodeAction();
         String codeReference = request.getParameter("action");
         
         
@@ -59,10 +58,7 @@ public class Preparation extends HttpServlet {
         
 
         if (debut.equals("Non") && analyse.equals("Comparaison")) {
-            
-//        codeReference = request.getParameter("action");
-//        Reference.setCodeAction(codeReference);
-        
+       
             dest = "/choixComparaison.jsp";
         } else {
             choix[0] = request.getParameter("choix1");
@@ -71,9 +67,6 @@ public class Preparation extends HttpServlet {
             Reference.setComparables(choix);
 
         }
-
-        System.out.println("code action: " + Reference.getCodeAction());
-        System.out.println("analyse: " + Reference.getOptionAnalyse());
 
         // Definition de la reference que la servlet Debut ira utiliser
         if (Reference.getOptionAnalyse().equals("Historique")) {
@@ -84,9 +77,6 @@ public class Preparation extends HttpServlet {
             Reference.setDestination("/StockApp_NetBeans/pages/definirDeclancheur.jsp");
         }
 
-        System.out.println("Preparation-dest: " + dest);
-        //returns an array of all submitted values.
-        //HttpSession session = request.getSession();
         RequestDispatcher disp = getServletContext().getRequestDispatcher(dest);
         disp.forward(request, response);
     }

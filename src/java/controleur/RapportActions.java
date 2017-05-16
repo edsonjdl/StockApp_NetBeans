@@ -48,9 +48,6 @@ public class RapportActions extends HttpServlet {
         daoCotisation.chargeRentabilite(infoRentabilite);
                 
         String dest = "/rentabiliteActions.jsp";
-        //String dest = request.getParameter("typeAnalyse");
-        
-        
         
         HttpSession session = request.getSession();
         session.setAttribute("maListe", infoRentabilite);

@@ -8,31 +8,28 @@ package modele;
 import java.util.Calendar;
 import java.util.Date;
 import webService.CotisationSource;
-//import java.sql.Date;
 
 /**
  *
  * @author edson
  */
 public class Cotisation {
-    
-    private String codeAction; 
-            private Date date;
-//    private double ouverture, max, min, fermeture, volFin, volQte;
+
+    private String codeAction;
+    private Date date;
     private double ouverture, max, min, fermeture, volFin, rentabilite;
 
     public Cotisation() {
     }
 
     public Cotisation(Date date, double abertura, double max, double min, double fechamento, double volFin, double volQte) {
-//        this.codeAction = codeAction;
-//        this.date = date;
+
         this.ouverture = abertura;
         this.fermeture = fechamento;
         this.max = max;
         this.min = min;
         this.volFin = volFin;
-//        this.volQte = volQte;
+
     }
 
     public Cotisation(double ouverture, double max, double min, double fermeture, double volFin) {
@@ -41,10 +38,10 @@ public class Cotisation {
         this.min = min;
         this.fermeture = fermeture;
         this.volFin = volFin;
-        
+
     }
 
-    public Cotisation(CotisationSource source) {        
+    public Cotisation(CotisationSource source) {
         this.date = source.getDateCotisation();
         this.ouverture = source.getOuverture();
         this.fermeture = source.getFermeture();
@@ -53,10 +50,6 @@ public class Cotisation {
         this.volFin = source.getVolFinance();
         this.codeAction = "Non défini";
     }
-    
-    
-    
-    
 
     public String getCodeAction() {
         return codeAction;
@@ -73,8 +66,6 @@ public class Cotisation {
     public void setRentabilite(double rentabilite) {
         this.rentabilite = rentabilite;
     }
-    
-    
 
     public Date getDate() {
         return date;
@@ -124,22 +115,9 @@ public class Cotisation {
         this.volFin = volFin;
     }
 
-//    public double getVolQte() {
-//        return volQte;
-//    }
-//
-//    public void setVolQte(double volQte) {
-////        this.volQte = volQte;
-//    }
-
-//    @Override
-//    public String toString() {
-//        return "Acao{" + "codeAction=" + codeAction + ", date = (" + date.get(Calendar.DAY_OF_MONTH)+"-"+(date.get(Calendar.MONTH)+1) +"-"+date.get(Calendar.YEAR) +") , abertura=" + ouverture + ", fechamento=" + fermeture + ", max=" + max + ", min=" + min + ", volFin=" + volFin + ", volQte=" + volQte + '}';
-//    }
-    
-      @Override
+    @Override
     public String toString() {
         return "Acao{" + "codeAction=" + codeAction + ") , abertura=" + ouverture + ", fechamento=" + fermeture + ", max=" + max + ", min=" + min + ", volFin=" + volFin + '}';
-    }  
-    
+    }
+
 }
