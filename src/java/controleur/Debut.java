@@ -77,8 +77,7 @@ public class Debut extends HttpServlet {
             Logger.getLogger(Debut.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String dest = "/samples/Menu.html";
-
+        
         HttpSession session = request.getSession();
         
         listePartielle = listeTotale.filtrerAction(Reference.getCodeAction());

@@ -19,7 +19,7 @@ public class Reference {
     
     private static String destination="";
     
-    private static String[] tables = {"bbas3", "bbse3", "bova11", "brkm5", "eqtl3", "flry3", "lren3", "mglu3", "pcar4", "petr4", "radl3", "smle3", "vale5", "wege3"};
+    private static String[] tables = {"bbas3", "bbse3", "bova11", "brkm5", "eqtl3", "flry3", "lren3", "mglu3", "pcar4", "petr4"};
     
     private static DonneesSource donneeSource;
 
