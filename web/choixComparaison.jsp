@@ -68,10 +68,7 @@
                                                     <option value="mglu3">MGLU3</option>
                                                     <option value="pcar4">PCAR4</option>
                                                     <option value="petr4">PETR4</option>
-                                                    <option value="radl3">RADL3</option>
-                                                    <option value="smle3">SMLE3</option>
-                                                    <option value="vale5">VALE5</option>
-                                                    <option value="wege3">WEGE3</option>
+
                                                 </select></td>
                                                        <td><label class="" >Action 2</label>
                                                 <select class="form-control position" name="choix2" >
@@ -86,10 +83,7 @@
                                                     <option value="mglu3">MGLU3</option>
                                                     <option value="pcar4">PCAR4</option>
                                                     <option value="petr4">PETR4</option>
-                                                    <option value="radl3">RADL3</option>
-                                                    <option value="smle3">SMLE3</option>
-                                                    <option value="vale5">VALE5</option>
-                                                    <option value="wege3">WEGE3</option>
+
                                                 </select></td>
                                         <td><label class="" >Action 3</label>
                                                 <select class="form-control position" name="choix3" >
@@ -104,10 +98,7 @@
                                                     <option value="mglu3">MGLU3</option>
                                                     <option value="pcar4">PCAR4</option>
                                                     <option value="petr4">PETR4</option>
-                                                    <option value="radl3">RADL3</option>
-                                                    <option value="smle3">SMLE3</option>
-                                                    <option value="vale5">VALE5</option>
-                                                    <option value="wege3">WEGE3</option>
+
                                                 </select></td>
                                         </tr>
                                         

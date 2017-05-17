@@ -62,10 +62,7 @@
                                                     <option value="mglu3">MGLU3</option>
                                                     <option value="pcar4">PCAR4</option>
                                                     <option value="petr4">PETR4</option>
-                                                    <option value="radl3">RADL3</option>
-                                                    <option value="smle3">SMLE3</option>
-                                                    <option value="vale5">VALE5</option>
-                                                    <option value="wege3">WEGE3</option>
+
                                                 </select></td>
                                                 <td id="stylishTD">
                                                     <a href="RapportActions">Plus d'informations par rapport les actions disponibles.</a>
